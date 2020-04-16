@@ -23,7 +23,7 @@ class Comment(models.Model):
   user = models.ForeignKey(User, related_name='fitness', on_delete=models.CASCADE)
 
   def __str__(self):
-    return f'{self.name}'
+    return f'{self.text}'
 
 class Borough(models.Model):
   name = models.CharField(max_length=200)
@@ -41,7 +41,7 @@ class FitnessClass(models.Model):
   description = models.CharField(max_length=1000)
   time_of_class = models.CharField(max_length=200)
   borough = models.ForeignKey(Borough, related_name='fitness', on_delete=models.CASCADE)
-  comment = models.ForeignKey(Comment, related_name='fitness', blank=True, on_delete=models.CASCADE)
+  comment = models.ManyToManyField(Comment, related_name='fitness', blank=True)
 
   def __str__(self):
     return f'{self.name}'
