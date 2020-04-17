@@ -7,10 +7,7 @@ class InstructorSerializer(serializers.ModelSerializer):
     model = Instructor
     fields = ('id', 'name')
 
-class BoroughSerializer(serializers.ModelSerializer):
-  class Meta:
-    model = Borough
-    fields = ('id', 'name', 'image')
+
 
 class GymSerializer(serializers.ModelSerializer):
   class Meta:
@@ -23,31 +20,37 @@ class CommentSerializer(serializers.ModelSerializer):
     model = Comment
     fields = ('id', 'text')
 
+class BoroughSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = Borough
+    fields = ('name', 'image', 'fitnessclass')
+
+
 class FitnessClassSerializer(serializers.ModelSerializer):
   class Meta:
     model = FitnessClass
-    fields = ('id', 'name', 'gym', 'activity_type', 'borough', 'instructor', 'time_of_class', 'description', 'comment')
+    fields = ('id', 'name', 'gym', 'activity_type', 'instructor', 'time_of_class', 'description', 'comment')
 
 class PopulateFitnessClassSerializer(serializers.ModelSerializer):
-  borough = BoroughSerializer()
   instructor = InstructorSerializer()
   gym = GymSerializer()
   comment = CommentSerializer(many=True)
-  user = UserSerializer()
 
   class Meta:
     model = FitnessClass
-    fields = ('id', 'name', 'gym', 'activity_type', 'borough', 'instructor', 'time_of_class', 'description', 'comment')
+    fields = ('id', 'name', 'gym', 'activity_type', 'instructor', 'time_of_class', 'description', 'comment')
+
+class PopulateBoroughSerializer(serializers.ModelSerializer):
+  fitnessclass = FitnessClassSerializer(many=True, required=False)
+  class Meta:
+    model = Borough
+    fields = ('name', 'image', 'fitnessclass')
 
 class BookedClassSerializer(serializers.ModelSerializer):
   class Meta:
     model = BookedClass
-    fields = ('id', 'name', 'gym', 'activity_type', 'borough', 'instructor', 'time_of_class', 'description', 'user', 'data_booked')
+    fields = ('id', 'name', 'gym', 'activity_type', 'instructor', 'time_of_class', 'description', 'user', 'data_booked')
 
-# class PopulateBookedClassSerializer(serializers.ModelSerializer):
 
-#   class Meta:
-#     model = BookedClass
-#     fields = ('id', 'booked_class', 'user')
 
 

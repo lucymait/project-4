@@ -23,14 +23,6 @@ class Comment(models.Model):
   def __str__(self):
     return f'{self.text}'
 
-class Borough(models.Model):
-  name = models.CharField(max_length=200)
-  image = models.CharField(max_length=1000)
-  fitnessclass = models.ManyToManyField('FitnessClass', related_name='fitness')
-
-  def __str__(self):
-    return f'{self.name}'
-
 
 class FitnessClass(models.Model):
   name = models.CharField(max_length=200)
@@ -39,9 +31,17 @@ class FitnessClass(models.Model):
   instructor = models.ForeignKey(Instructor, related_name='fitness', on_delete=models.CASCADE)
   description = models.CharField(max_length=1000)
   time_of_class = models.CharField(max_length=200)
-  borough = models.ForeignKey(Borough, related_name='fitness', on_delete=models.CASCADE)
+  # borough = models.ForeignKey(Borough, related_name='fitness', on_delete=models.CASCADE)
   comment = models.ManyToManyField(Comment, related_name='fitness', blank=True)
   # user = models.ForeignKey(User, related_name='fitness', on_delete=models.CASCADE)
+
+  def __str__(self):
+    return f'{self.name}'
+
+class Borough(models.Model):
+  name = models.CharField(max_length=200)
+  image = models.CharField(max_length=1000)
+  fitnessclass = models.ManyToManyField(FitnessClass, related_name='fitness', blank=True)
 
   def __str__(self):
     return f'{self.name}'
@@ -53,7 +53,7 @@ class BookedClass(models.Model):
   instructor = models.CharField(max_length=200)
   description = models.CharField(max_length=1000)
   time_of_class = models.CharField(max_length=200)
-  borough = models.CharField(max_length=200)
+  # borough = models.CharField(max_length=200)
   data_booked = models.CharField(max_length=100)
   user = models.ForeignKey(User, related_name='fitness', on_delete=models.CASCADE)
 

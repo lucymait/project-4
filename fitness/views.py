@@ -8,7 +8,7 @@ from rest_framework import permissions
 from rest_framework.permissions import BasePermission, IsAuthenticated
 
 from .models import FitnessClass, Borough, Gym, Comment, BookedClass
-from .serializers import FitnessClassSerializer, BoroughSerializer, PopulateFitnessClassSerializer, GymSerializer, CommentSerializer, BookedClassSerializer
+from .serializers import FitnessClassSerializer, BoroughSerializer, PopulateFitnessClassSerializer, GymSerializer, CommentSerializer, BookedClassSerializer, PopulateBoroughSerializer
 
 # Create your views here.
 
@@ -49,7 +49,7 @@ class AllBoroughView(APIView):
 
   def get(self, request):
     boroughs = Borough.objects.all()
-    serializer = BoroughSerializer(boroughs, many=True)
+    serializer = PopulateBoroughSerializer(boroughs, many=True)
     return Response(serializer.data)
 
 class BoroughDetailView(APIView):
@@ -114,3 +114,16 @@ class BookedClassesView(APIView):
       return Response(booked_class.data, status=HTTP_202_ACCEPTED)
     
     return Response(status=HTTP_422_UNPROCESSABLE_ENTITY)
+
+class BookedClassDetailView(APIView):
+
+  def get(self, request, pk):
+    booked_class = BookedClass.objects.get(pk=pk)
+    serializer = BookedClassSerializer(booked_class)
+    return Response(serializer.data)
+
+  def delete(self, request, pk):
+
+    booked_class = BookedClass.objects.get(pk=pk)
+    booked_class.delete()
+    return Response(status=HTTP_204_NO_CONTENT)

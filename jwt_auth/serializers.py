@@ -11,7 +11,7 @@ BookedClass = apps.get_model('fitness', 'BookedClass')
 class BookedClassSerializer(serializers.ModelSerializer):
   class Meta:
     model = BookedClass
-    fields = ('id', 'name', 'gym', 'activity_type', 'borough', 'instructor', 'time_of_class', 'description', 'user', 'data_booked')
+    fields = ('id', 'name', 'gym', 'activity_type', 'instructor', 'time_of_class', 'description', 'user', 'data_booked')
 
 class UserSerializer(serializers.ModelSerializer):
 
