@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from jwt_auth.serializers import UserSerializer
 from .models import Comment, FitnessClass, Borough, Gym, Instructor
 
 class InstructorSerializer(serializers.ModelSerializer):
@@ -20,19 +21,20 @@ class GymSerializer(serializers.ModelSerializer):
 class CommentSerializer(serializers.ModelSerializer):
   class Meta: 
     model = Comment
-    fields = ('id', 'text', 'user')
+    fields = ('id', 'text')
 
 class FitnessClassSerializer(serializers.ModelSerializer):
   class Meta:
     model = FitnessClass
-    fields = ('id', 'name', 'gym', 'activity_type', 'borough', 'instructor', 'time_of_class', 'description', 'comment')
+    fields = ('id', 'name', 'gym', 'activity_type', 'borough', 'instructor', 'time_of_class', 'description', 'comment', 'user')
 
 class PopulateFitnessClassSerializer(serializers.ModelSerializer):
   borough = BoroughSerializer()
   instructor = InstructorSerializer()
   gym = GymSerializer()
   comment = CommentSerializer(many=True)
+  user = UserSerializer()
 
   class Meta:
     model = FitnessClass
-    fields = ('id', 'name', 'gym', 'activity_type', 'borough', 'instructor', 'time_of_class', 'description', 'comment')
+    fields = ('id', 'name', 'gym', 'activity_type', 'borough', 'instructor', 'time_of_class', 'description', 'comment', 'user')
