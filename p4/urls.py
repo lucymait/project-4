@@ -20,5 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('frontend.urls')),
     path('api/fitness/', include('fitness.urls')),
-    # path('api/', include('jwt_auth.urls'))
+    path('api/', include('jwt_auth.urls'))
 ]
