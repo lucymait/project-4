@@ -1,8 +1,17 @@
 from rest_framework import serializers
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
+User = get_user_model()
 import django.contrib.auth.password_validation as validations
 from django.contrib.auth.hashers import make_password
 from django.core.exceptions import ValidationError
+
+from django.apps import apps
+BookedClass = apps.get_model('fitness', 'BookedClass')
+
+class BookedClassSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = BookedClass
+    fields = ('id', 'name', 'gym', 'activity_type', 'borough', 'instructor', 'time_of_class', 'description', 'user', 'data_booked')
 
 class UserSerializer(serializers.ModelSerializer):
 
@@ -27,5 +36,16 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'password', 'password_confirmation',)
+        fields = ('username', 'email', 'image', 'password', 'password_confirmation','fitness')
+        extra_kwargs = {
+          'fitness' : {'required': False}
+        }
+
+class PopulateUserSerializer(serializers.ModelSerializer):
+    fitness = BookedClassSerializer(many=True, required=False)
+    class Meta:
+      model = User
+      fields = ('username', 'email', 'image','fitness')
+
+
         

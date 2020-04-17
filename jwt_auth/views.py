@@ -4,10 +4,12 @@ from rest_framework.views import APIView
 from rest_framework.generics import CreateAPIView
 from rest_framework.response import Response
 from rest_framework.exceptions import PermissionDenied
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
+User = get_user_model()
 from django.conf import settings
 import jwt
-from .serializers import UserSerializer
+from .serializers import UserSerializer, PopulateUserSerializer
+from rest_framework.permissions import BasePermission, IsAuthenticated
 
 # We could also use APIView, like the textbook, but CreateAPIView gives us a nicer form
 class RegisterView(CreateAPIView):
@@ -47,3 +49,13 @@ class LoginView(APIView):
         # Create a JWT for the user, and send it back
         token = jwt.encode({'sub': user.id}, settings.SECRET_KEY, algorithm='HS256')
         return Response({'token': token, 'message': f'Welcome back {user.username}!'})
+
+
+class ProfileView(APIView):
+
+  permission_classes = (IsAuthenticated, )
+
+  def get(self, request):
+    user = User.objects.get(pk=request.user.id)
+    serialized_user = PopulateUserSerializer(user)
+    return Response(serialized_user.data)

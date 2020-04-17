@@ -7,8 +7,8 @@ from rest_framework.status import HTTP_202_ACCEPTED, HTTP_422_UNPROCESSABLE_ENTI
 from rest_framework import permissions
 from rest_framework.permissions import BasePermission, IsAuthenticated
 
-from .models import FitnessClass, Borough, Gym, Comment
-from .serializers import FitnessClassSerializer, BoroughSerializer, PopulateFitnessClassSerializer, GymSerializer, CommentSerializer
+from .models import FitnessClass, Borough, Gym, Comment, BookedClass
+from .serializers import FitnessClassSerializer, BoroughSerializer, PopulateFitnessClassSerializer, GymSerializer, CommentSerializer, BookedClassSerializer
 
 # Create your views here.
 
@@ -100,3 +100,17 @@ class CommentDetailView(APIView):
     comment = Comment.objects.get(pk=pk)
     serializer = CommentSerializer(comment)
     return Response(serializer.data)
+
+class BookedClassesView(APIView):
+  # queryset = BookedClass.objects.all()
+  # serializer_class = BookedClassSerializer
+  permissions_classes = (IsAuthenticated, )
+
+  def post(self, request):
+    request.data['user'] = request.user.id
+    booked_class = BookedClassSerializer(data = request.data)
+    if booked_class.is_valid():
+      booked_class.save()
+      return Response(booked_class.data, status=HTTP_202_ACCEPTED)
+    
+    return Response(status=HTTP_422_UNPROCESSABLE_ENTITY)

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from jwt_auth.serializers import UserSerializer
-from .models import Comment, FitnessClass, Borough, Gym, Instructor
+from .models import Comment, FitnessClass, Borough, Gym, Instructor, BookedClass
 
 class InstructorSerializer(serializers.ModelSerializer):
   class Meta:
@@ -26,7 +26,7 @@ class CommentSerializer(serializers.ModelSerializer):
 class FitnessClassSerializer(serializers.ModelSerializer):
   class Meta:
     model = FitnessClass
-    fields = ('id', 'name', 'gym', 'activity_type', 'borough', 'instructor', 'time_of_class', 'description', 'comment', 'user')
+    fields = ('id', 'name', 'gym', 'activity_type', 'borough', 'instructor', 'time_of_class', 'description', 'comment')
 
 class PopulateFitnessClassSerializer(serializers.ModelSerializer):
   borough = BoroughSerializer()
@@ -37,4 +37,17 @@ class PopulateFitnessClassSerializer(serializers.ModelSerializer):
 
   class Meta:
     model = FitnessClass
-    fields = ('id', 'name', 'gym', 'activity_type', 'borough', 'instructor', 'time_of_class', 'description', 'comment', 'user')
+    fields = ('id', 'name', 'gym', 'activity_type', 'borough', 'instructor', 'time_of_class', 'description', 'comment')
+
+class BookedClassSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = BookedClass
+    fields = ('id', 'name', 'gym', 'activity_type', 'borough', 'instructor', 'time_of_class', 'description', 'user', 'data_booked')
+
+# class PopulateBookedClassSerializer(serializers.ModelSerializer):
+
+#   class Meta:
+#     model = BookedClass
+#     fields = ('id', 'booked_class', 'user')
+
+
