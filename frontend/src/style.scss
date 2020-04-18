@@ -1,3 +1,16 @@
+body {
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+}
+
+#root {
+  background-color: whitesmoke;
+  height: 100%;
+}
+
+
 .borough-image {
   height: 200px;
   width: 300px;
@@ -54,20 +67,41 @@
       }
   }
 }
-.button.is-success {
-  border-radius: 20px;
-  width: 400px;
-  background-color: rebeccapurple;
-}
 
-.input {
-  width: 400px;
+.register-section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+    img {
+      height: 50px;
+      margin: 10px;
+    }
+    .form {
+      height: 60%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      input {
+        font-family: 'Cantarell', sans-serif;
+        &:focus {
+          border: 1px solid rebeccapurple;
+        }
+      }
+      button {
+        font-family: 'Cantarell', sans-serif;
+        background-color: rebeccapurple;
+        color: whitesmoke;
+      }
+    }
   }
 
-h1.title.register {
-    padding-left: 150px !important;
-    display: flex !important;
-  }
+
+
+
 
 .title.borough {
   color: rebeccapurple !important;
@@ -76,13 +110,6 @@ h1.title.register {
   justify-content: center;
 }
 
-.container.register {
-  display: flex;
-  justify-content: center;
-  flex-direction: column !important;
-  padding-left: 250px;
-  padding-top: 100px;
-  }
 
 section.section.borough {
   padding-left: 50px !important;
@@ -92,4 +119,13 @@ section.section.borough {
 .subtitle.borough {
   display: flex;
   justify-content: center;
+}
+
+@media only screen and (min-width: 683px) {
+  .form {
+    input {
+      width: 50vw;
+    }
+  }
+
 }

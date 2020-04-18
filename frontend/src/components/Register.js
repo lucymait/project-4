@@ -22,75 +22,65 @@ const Register = (props) => {
   }
 
   console.log(registerData)
-  return <section className="section">
-    <div className="container register">
-      <h1 className="title register">Register</h1>
-      <form
-        className="form"
-        onSubmit={handleSubmit}
-      >
-        <div className="field">
-          <div className="control has-icons-left has-icons-right">
-            <input
-              onChange={handleChange}
-              type="text"
-              name="email"
-              className="input is-rounded"
-              placeholder="Email"
-            />
-            <span className="icon is-small is-left">
-              <i className="fas fa-envelope"></i>
-            </span>
-          </div>
-        </div>
-        <div className="field">
-          <div className="control has-icons-left has-icons-right">
-            <input
-              onChange={handleChange}
-              type="text"
-              name="username"
-              className="input is-rounded"
-              placeholder="Username"
-            />
-            <span className="icon is-small is-left">
-              <i className="fas fa-user"></i>
-            </span>
-          </div>
-        </div>
-        <div className="field">
-          <div className="control has-icons-left has-icons-right">
-            <input
-              onChange={handleChange}
-              type="password"
-              name="password"
-              className="input is-rounded"
-              placeholder="Password"
-            />
-            <span className="icon is-small is-left">
-              <i className="fas fa-lock"></i>
-            </span>
-          </div>
-        </div>
-        <div className="field">
-          <div className="control has-icons-left has-icons-right">
-            <input
-              onChange={handleChange}
-              type="password"
-              name="password_confirmation"
-              className="input is-rounded"
-              placeholder="Confirm Password"
+  return <section className="section register-section">
+    <img src='https://i.imgur.com/50EzKYk.png' />
+    <form
+      className="form"
+      onSubmit={handleSubmit}
+    >
+      <div className="control has-icons-left has-icons-right">
+        <input
+          onChange={handleChange}
+          type="text"
+          name="email"
+          className="input is-rounded"
+          placeholder="Email"
+        />
+        <span className="icon is-small is-left">
+          <i className="fas fa-envelope"></i>
+        </span>
+      </div>
+      <div className="control has-icons-left has-icons-right">
+        <input
+          onChange={handleChange}
+          type="text"
+          name="username"
+          className="input is-rounded"
+          placeholder="Username"
+        />
+        <span className="icon is-small is-left">
+          <i className="fas fa-user"></i>
+        </span>
+      </div>
+      <div className="control has-icons-left has-icons-right">
+        <input
+          onChange={handleChange}
+          type="password"
+          name="password"
+          className="input is-rounded"
+          placeholder="Password"
+        />
+        <span className="icon is-small is-left">
+          <i className="fas fa-lock"></i>
+        </span>
+      </div>
+      <div className="control has-icons-left has-icons-right">
+        <input
+          onChange={handleChange}
+          type="password"
+          name="password_confirmation"
+          className="input is-rounded"
+          placeholder="Confirm Password"
 
-            />
-            <span className="icon is-small is-left">
-              <i className="fas fa-lock"></i>
-            </span>
-          </div>
-        </div>
-        <button className="button is-success"
-        >Register
-        </button>
-      </form>
-    </div>
+        />
+        <span className="icon is-small is-left">
+          <i className="fas fa-lock"></i>
+        </span>
+      </div>
+      <button className='button'>
+        Register
+      </button>
+    </form>
   </section>
 
 
