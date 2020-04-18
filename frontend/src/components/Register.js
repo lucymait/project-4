@@ -1,18 +1,38 @@
-import React from 'react'
+import React, { useState } from 'react'
+import axios from 'axios'
 
-const Register = () => {
+const Register = (props) => {
+  const [registerData, setRegisterData] = useState({})
 
+  function handleChange(event) {
+    const { name, value } = event.target
+    const data = { ...registerData, [name]: value }
+    setRegisterData(data)
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault()
+    axios.post('/api/register',
+      registerData)
+      .then(resp => {
+        console.log(resp.data)
+        props.history.push('/login')
+      })
+      .catch(err => console.log(err))
+  }
+
+  console.log(registerData)
   return <section className="section">
     <div className="container register">
       <h1 className="title register">Register</h1>
       <form
         className="form"
-      // onSubmit={(event) => this.handleSubmit(event)}
+        onSubmit={handleSubmit}
       >
         <div className="field">
           <div className="control has-icons-left has-icons-right">
             <input
-              // onChange={(event) => this.handleChange(event)}
+              onChange={handleChange}
               type="text"
               name="email"
               className="input is-rounded"
@@ -21,15 +41,12 @@ const Register = () => {
             <span className="icon is-small is-left">
               <i className="fas fa-envelope"></i>
             </span>
-            <span className="icon is-small is-right">
-              <i className="fas fa-check"></i>
-            </span>
           </div>
         </div>
         <div className="field">
           <div className="control has-icons-left has-icons-right">
             <input
-              // onChange={(event) => this.handleChange(event)}
+              onChange={handleChange}
               type="text"
               name="username"
               className="input is-rounded"
@@ -38,15 +55,12 @@ const Register = () => {
             <span className="icon is-small is-left">
               <i className="fas fa-user"></i>
             </span>
-            <span className="icon is-small is-right">
-              <i className="fas fa-check"></i>
-            </span>
           </div>
         </div>
         <div className="field">
           <div className="control has-icons-left has-icons-right">
             <input
-              // onChange={(event) => this.handleChange(event)}
+              onChange={handleChange}
               type="password"
               name="password"
               className="input is-rounded"
@@ -55,17 +69,14 @@ const Register = () => {
             <span className="icon is-small is-left">
               <i className="fas fa-lock"></i>
             </span>
-            <span className="icon is-small is-right">
-              <i className="fas fa-check"></i>
-            </span>
           </div>
         </div>
         <div className="field">
           <div className="control has-icons-left has-icons-right">
             <input
-              // onChange={(event) => this.handleChange(event)}
+              onChange={handleChange}
               type="password"
-              name="passwordConfirmation"
+              name="password_confirmation"
               className="input is-rounded"
               placeholder="Confirm Password"
 
@@ -73,14 +84,11 @@ const Register = () => {
             <span className="icon is-small is-left">
               <i className="fas fa-lock"></i>
             </span>
-            <span className="icon is-small is-right">
-              <i className="fas fa-check"></i>
-            </span>
           </div>
         </div>
         <button className="button is-success"
         >Register
-      </button>
+        </button>
       </form>
     </div>
   </section>

@@ -2,3 +2,43 @@
   height: 200px;
   width: 300px;
 }
+
+.button.is-success {
+  border-radius: 20px;
+  width: 400px;
+  background-color: rebeccapurple;
+}
+
+.input {
+  width: 400px;
+  }
+
+h1.title.register {
+    padding-left: 150px !important;
+    display: flex !important;
+  }
+
+.title.borough {
+  color: rebeccapurple !important;
+  font-weight: bold !important;
+  display: flex;
+  justify-content: center;
+}
+
+.container.register {
+  display: flex;
+  justify-content: center;
+  flex-direction: column !important;
+  padding-left: 250px;
+  padding-top: 100px;
+  }
+
+section.section.borough {
+  padding-left: 50px !important;
+  padding-right: 50px !important;
+}
+
+.subtitle.borough {
+  display: flex;
+  justify-content: center;
+}

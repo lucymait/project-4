@@ -60,7 +60,7 @@ class BoroughDetailView(APIView):
   def get(self, request, pk):
     borough = Borough.objects.get(pk=pk)
     self.check_object_permissions(request, borough)
-    serializer = BoroughSerializer(borough)
+    serializer = PopulateBoroughSerializer(borough)
     return Response(serializer.data)
 
 class AllGymView(APIView):
