@@ -2,3 +2,55 @@
   height: 200px;
   width: 300px;
 }
+
+.hero-body {
+  .container {
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    // background-color: royalblue;
+    .title {
+      // background-color: salmon;
+      border: 4px solid rebeccapurple;
+      width: 280px;
+      height: 300px;
+      border-radius: 80%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      h1 {
+        color: rebeccapurple;
+        font-size: 30px;
+        margin: 5%;
+        font-family: 'Cantarell', sans-serif;
+        letter-spacing: 4px;
+      }
+      img {
+        height: 125px;
+        width: 120px;
+      }
+    }
+      .subtitle {
+        // background-color: rosybrown;
+        width: 280px;
+        height: 150px;
+        display: flex;
+        flex-direction: column;
+          button {
+            font-family: 'Cantarell', sans-serif;
+            color: rebeccapurple;
+            font-weight: bold;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            &:hover {
+              color: whitesmoke;
+              background-color: rebeccapurple;
+            }
+          }
+      }
+  }
+}
