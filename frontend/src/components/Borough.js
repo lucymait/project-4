@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import ReactDOM from 'react-dom'
-import 'bulma'
+import axios from 'axios'
 
 const Borough = () => {
   const [data, setData] = useState([])
 
   useEffect(() => {
-    fetch('/api/fitness/borough')
-      .then(resp => resp.json())
-      .then(resp => setData(resp))
+    axios.get('/api/fitness/borough/')
+      .then(resp => setData(resp.data))
   }, [])
+
+
 
   return <>
     <section className="section">
@@ -34,8 +34,6 @@ const Borough = () => {
       </div>
     </section>
   </>
-
-
 }
 
 export default Borough
