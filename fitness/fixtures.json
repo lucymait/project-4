@@ -1,1 +1,57 @@
-
+[
+{
+  "model": "fitness.borough",
+  "pk": 1,
+  "fields": {
+    "name": "Hammersmith & Fulham",
+    "image": "https://static.standard.co.uk/s3fs-public/thumbnails/image/2019/06/25/11/Hammersmith-Bridge5478.jpg?w968",
+    "fitnessclass": []
+  }
+},
+{
+  "model": "fitness.borough",
+  "pk": 2,
+  "fields": {
+    "name": "Lambeth",
+    "image": "https://www.wandsworthguardian.co.uk/resources/images/8821679.jpg?display=1&htype=0&type=responsive-gallery",
+    "fitnessclass": []
+  }
+},
+{
+  "model": "fitness.borough",
+  "pk": 3,
+  "fields": {
+    "name": "Westminster",
+    "image": "https://static.homesandproperty.co.uk/s3fs-public/styles/story_large/public/thumbnails/image/2015/11/25/13/westminster-main-620.jpg",
+    "fitnessclass": []
+  }
+},
+{
+  "model": "fitness.bookedclass",
+  "pk": 1,
+  "fields": {
+    "name": "Boxing",
+    "gym": "blah",
+    "activity_type": "blah",
+    "instructor": "blah",
+    "description": "blah",
+    "time_of_class": "blah",
+    "data_booked": "blah",
+    "user": 2
+  }
+},
+{
+  "model": "fitness.bookedclass",
+  "pk": 2,
+  "fields": {
+    "name": "Boxing",
+    "gym": "blah",
+    "activity_type": "blah",
+    "instructor": "blah",
+    "description": "blah",
+    "time_of_class": "blah",
+    "data_booked": "blah",
+    "user": 2
+  }
+}
+]

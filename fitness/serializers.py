@@ -23,7 +23,7 @@ class CommentSerializer(serializers.ModelSerializer):
 class BoroughSerializer(serializers.ModelSerializer):
   class Meta:
     model = Borough
-    fields = ('name', 'image', 'fitnessclass')
+    fields = ('id', 'name', 'image', 'fitnessclass')
 
 
 class FitnessClassSerializer(serializers.ModelSerializer):
@@ -44,7 +44,7 @@ class PopulateBoroughSerializer(serializers.ModelSerializer):
   fitnessclass = FitnessClassSerializer(many=True, required=False)
   class Meta:
     model = Borough
-    fields = ('name', 'image', 'fitnessclass')
+    fields = ('id', 'name', 'image', 'fitnessclass')
 
 class BookedClassSerializer(serializers.ModelSerializer):
   class Meta:
