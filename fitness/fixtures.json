@@ -1,11 +1,302 @@
 [
 {
+  "model": "fitness.instructor",
+  "pk": 1,
+  "fields": {
+    "name": "Lucy"
+  }
+},
+{
+  "model": "fitness.instructor",
+  "pk": 2,
+  "fields": {
+    "name": "Annie"
+  }
+},
+{
+  "model": "fitness.instructor",
+  "pk": 3,
+  "fields": {
+    "name": "Nick"
+  }
+},
+{
+  "model": "fitness.instructor",
+  "pk": 4,
+  "fields": {
+    "name": "Michael"
+  }
+},
+{
+  "model": "fitness.instructor",
+  "pk": 5,
+  "fields": {
+    "name": "Jonny"
+  }
+},
+{
+  "model": "fitness.instructor",
+  "pk": 6,
+  "fields": {
+    "name": "Claudio"
+  }
+},
+{
+  "model": "fitness.instructor",
+  "pk": 7,
+  "fields": {
+    "name": "Astrid"
+  }
+},
+{
+  "model": "fitness.instructor",
+  "pk": 8,
+  "fields": {
+    "name": "Brandon"
+  }
+},
+{
+  "model": "fitness.instructor",
+  "pk": 9,
+  "fields": {
+    "name": "Casey"
+  }
+},
+{
+  "model": "fitness.instructor",
+  "pk": 10,
+  "fields": {
+    "name": "Callum"
+  }
+},
+{
+  "model": "fitness.gym",
+  "pk": 1,
+  "fields": {
+    "name": "The Gym",
+    "facilities": "Showers, Parking"
+  }
+},
+{
+  "model": "fitness.gym",
+  "pk": 2,
+  "fields": {
+    "name": "Pure Gym",
+    "facilities": "Showers"
+  }
+},
+{
+  "model": "fitness.gym",
+  "pk": 3,
+  "fields": {
+    "name": "Leisure Centre",
+    "facilities": "Showers"
+  }
+},
+{
+  "model": "fitness.gym",
+  "pk": 9,
+  "fields": {
+    "name": "Virgin Active",
+    "facilities": "Showers, Lockers"
+  }
+},
+{
+  "model": "fitness.gym",
+  "pk": 10,
+  "fields": {
+    "name": "Nuffield Health",
+    "facilities": "Showers, Lockers, Parking"
+  }
+},
+{
+  "model": "fitness.gym",
+  "pk": 11,
+  "fields": {
+    "name": "Anytime Fitness",
+    "facilities": "Showers, Lockers"
+  }
+},
+{
+  "model": "fitness.gym",
+  "pk": 16,
+  "fields": {
+    "name": "Open Gym",
+    "facilities": "None"
+  }
+},
+{
+  "model": "fitness.gym",
+  "pk": 17,
+  "fields": {
+    "name": "Reach Fitness",
+    "facilities": "Parking"
+  }
+},
+{
+  "model": "fitness.gym",
+  "pk": 19,
+  "fields": {
+    "name": "David Lloyd",
+    "facilities": "Showers, Lockers"
+  }
+},
+{
+  "model": "fitness.gym",
+  "pk": 20,
+  "fields": {
+    "name": "ONE LDN",
+    "facilities": "Showers"
+  }
+},
+{
+  "model": "fitness.fitnessclass",
+  "pk": 1,
+  "fields": {
+    "name": "Yogarise",
+    "gym": 1,
+    "activity_type": "Yoga",
+    "instructor": 1,
+    "description": "This 1 hour class at Yogarise is based on the Primary Series \u2013 a dynamic sequence of postures practiced with focused breathing techniques, designed specifically to align the body and strengthen the nervous system, while cultivating a feeling of inner peace and leading to a natural state of meditation.",
+    "time_of_class": "18:00",
+    "comment": []
+  }
+},
+{
+  "model": "fitness.fitnessclass",
+  "pk": 2,
+  "fields": {
+    "name": "Cycle",
+    "gym": 2,
+    "activity_type": "Cycling",
+    "instructor": 2,
+    "description": "A really effective, motivating calorie burning/ cardiovascular workout on our indoor bikes that involves no routines or need for co-ordination.",
+    "time_of_class": "06:00",
+    "comment": []
+  }
+},
+{
+  "model": "fitness.fitnessclass",
+  "pk": 3,
+  "fields": {
+    "name": "BodyCombat",
+    "gym": 3,
+    "activity_type": "HIIT",
+    "instructor": 7,
+    "description": "Step into a BODYCOMBAT workout and you\u2019ll punch and kick your way to fitness, burning up to 740 calories along the way. This high-energy martial-arts inspired workout is totally non-contact and there are no complex moves to master.",
+    "time_of_class": "17:00",
+    "comment": []
+  }
+},
+{
+  "model": "fitness.fitnessclass",
+  "pk": 4,
+  "fields": {
+    "name": "Interval Training",
+    "gym": 9,
+    "activity_type": "HIIT",
+    "instructor": 3,
+    "description": "An excellent workout designed to raise your heart rate, improve your fitness and boost your energy levels",
+    "time_of_class": "20:00",
+    "comment": []
+  }
+},
+{
+  "model": "fitness.fitnessclass",
+  "pk": 5,
+  "fields": {
+    "name": "Box Mind",
+    "gym": 19,
+    "activity_type": "Boxing",
+    "instructor": 4,
+    "description": "The class is predominantly bodyweight exercises blended with boxing drills and techniques. All of our coaches are current or former boxers with years of boxing knowledge and experience",
+    "time_of_class": "19:00",
+    "comment": []
+  }
+},
+{
+  "model": "fitness.fitnessclass",
+  "pk": 6,
+  "fields": {
+    "name": "Revive Pilates",
+    "gym": 20,
+    "activity_type": "Pilates",
+    "instructor": 6,
+    "description": "Pilates improves flexibility, builds strength and develops control and endurance in the entire body. Our mat based classes emphasise alignment, core development and will improve your coordination and balance. Our instructors use both classical and contemporary approaches to create physically challenging classes which are open to all levels.",
+    "time_of_class": "07:00",
+    "comment": []
+  }
+},
+{
+  "model": "fitness.fitnessclass",
+  "pk": 7,
+  "fields": {
+    "name": "Zumba",
+    "gym": 17,
+    "activity_type": "Dance",
+    "instructor": 5,
+    "description": "A total workout, combining all elements of fitness \u2013 cardio, muscle conditioning, balance and flexibility, boosted energy and a serious dose of awesome each time you leave class.",
+    "time_of_class": "18:30",
+    "comment": []
+  }
+},
+{
+  "model": "fitness.fitnessclass",
+  "pk": 8,
+  "fields": {
+    "name": "Pure Barre",
+    "gym": 11,
+    "activity_type": "Barre",
+    "instructor": 9,
+    "description": "Pure Barre is an intelligent fusion of Pilates, classical ballet exercises and yoga stretches. No equipment is used during these sessions.",
+    "time_of_class": "19:30",
+    "comment": []
+  }
+},
+{
+  "model": "fitness.fitnessclass",
+  "pk": 9,
+  "fields": {
+    "name": "Extreme Circuits",
+    "gym": 16,
+    "activity_type": "HIIT",
+    "instructor": 8,
+    "description": "This high energy, intense conditioning session will be made up of a combination of body weight exercises. This true full body workout will push you to the limits but enjoy the benefits.",
+    "time_of_class": "06:00",
+    "comment": []
+  }
+},
+{
+  "model": "fitness.fitnessclass",
+  "pk": 10,
+  "fields": {
+    "name": "Vinyasa Flow",
+    "gym": 10,
+    "activity_type": "Yoga",
+    "instructor": 10,
+    "description": "Vinyasa Flow is a dynamic sequence, connecting each movement with breath, creating heat, body strength and flexibility. Lots of warriors and downward dogs, having fun on the mat whilst working on releasing tension and letting go of any worries. It will make you feel truly relaxed and connected with your body. Evening classes will allow you to truly let go and unwind. The dynamic nature of this class makes it a perfect workout. Each session includes pranayama (breath work) and guided meditation to make you feel recharged and calm. Prepare to have fun and rejuvenate. Open to all levels.",
+    "time_of_class": "20:00",
+    "comment": []
+  }
+},
+{
   "model": "fitness.borough",
   "pk": 1,
   "fields": {
     "name": "Hammersmith & Fulham",
     "image": "https://static.standard.co.uk/s3fs-public/thumbnails/image/2019/06/25/11/Hammersmith-Bridge5478.jpg?w968",
-    "fitnessclass": []
+    "fitnessclass": [
+      8,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10
+    ]
   }
 },
 {
@@ -14,7 +305,18 @@
   "fields": {
     "name": "Lambeth",
     "image": "https://www.wandsworthguardian.co.uk/resources/images/8821679.jpg?display=1&htype=0&type=responsive-gallery",
-    "fitnessclass": []
+    "fitnessclass": [
+      3,
+      1,
+      2,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ]
   }
 },
 {
@@ -23,7 +325,198 @@
   "fields": {
     "name": "Westminster",
     "image": "https://static.homesandproperty.co.uk/s3fs-public/styles/story_large/public/thumbnails/image/2015/11/25/13/westminster-main-620.jpg",
-    "fitnessclass": []
+    "fitnessclass": [
+      4,
+      1,
+      2,
+      3,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ]
+  }
+},
+{
+  "model": "fitness.borough",
+  "pk": 4,
+  "fields": {
+    "name": "Southwark",
+    "image": "https://www.smartcitiesworld.net/AcuCustom/Sitename/DAM/019/London_Southwark_AdobeStock_248248284.jpg",
+    "fitnessclass": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ]
+  }
+},
+{
+  "model": "fitness.borough",
+  "pk": 5,
+  "fields": {
+    "name": "Hackney",
+    "image": "https://img.theculturetrip.com/768x432/wp-content/uploads/2018/11/kdcyxc.jpg",
+    "fitnessclass": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ]
+  }
+},
+{
+  "model": "fitness.borough",
+  "pk": 6,
+  "fields": {
+    "name": "Greenwich",
+    "image": "https://cdn.thecrazytourist.com/wp-content/uploads/2018/07/ccimage-shutterstock_721255741.jpg",
+    "fitnessclass": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ]
+  }
+},
+{
+  "model": "fitness.borough",
+  "pk": 7,
+  "fields": {
+    "name": "The City",
+    "image": "https://evanevanstours.com/blog/wp-content/uploads/2019/07/city-of-london.jpg",
+    "fitnessclass": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ]
+  }
+},
+{
+  "model": "fitness.borough",
+  "pk": 8,
+  "fields": {
+    "name": "Islington",
+    "image": "https://media.onthemarket.com/location-guides/islington-north-london/regents-canal-islington.jpg",
+    "fitnessclass": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ]
+  }
+},
+{
+  "model": "fitness.borough",
+  "pk": 9,
+  "fields": {
+    "name": "Camden",
+    "image": "https://secretldn.com/wp-content/uploads/2018/11/Camden-Market-4-e1542038186914.jpg",
+    "fitnessclass": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ]
+  }
+},
+{
+  "model": "fitness.borough",
+  "pk": 10,
+  "fields": {
+    "name": "Wandsworth",
+    "image": "https://www.asmag.com/upload/pic/case/51813.646375.jpg",
+    "fitnessclass": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ]
+  }
+},
+{
+  "model": "fitness.borough",
+  "pk": 11,
+  "fields": {
+    "name": "Richmond",
+    "image": "https://media.timeout.com/images/105180194/630/472/image.jpg",
+    "fitnessclass": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ]
+  }
+},
+{
+  "model": "fitness.borough",
+  "pk": 12,
+  "fields": {
+    "name": "Tower Hamlets",
+    "image": "https://media.timeout.com/images/105466098/630/472/image.jpg",
+    "fitnessclass": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ]
   }
 },
 {

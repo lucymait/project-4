@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import 'bulma'
 
 const FitnessClasses = (props) => {
@@ -18,27 +19,24 @@ const FitnessClasses = (props) => {
     {/* <h1>Hello World</h1> */}
     <section className="section">
       <div className="container">
-        <div className="columns is-multiline">
-          <div className="column is-one-third">
-            <div className="card">
-              <div className="card-content">
-                <h2 className="subtitle">{borough.name}</h2>
-
-              </div>
-              <div className="card-image">
-                <figure className="card-image is-3by3">
-                  <img src={borough.image} className="art-image"></img>
-                </figure>
+        <h2 className="subtitle">{borough.name}</h2>
+        <div>
+          {borough.fitnessclass.map(elem => {
+            return <div className="card" key={elem.id}>
+              <div className="card-content class">
+                <div className="elem">
+                  <h1>{elem.name}</h1>
+                  <h2>{elem.time_of_class}</h2>
+                </div>
+                <div className="buttons">
+                  <Link to={{ pathname: `fitness/${elem.id}` }}>
+                    <button className="button fitness">More Info</button>
+                  </Link>
+                  <button className="button fitness">Book Now</button>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="column is-one-third">
-            {borough.fitnessclass.map(elem => {
-              return <div key={elem.id}>
-                <h1>{elem.name}</h1>
-              </div>
-            })}
-          </div>
+          })}
         </div>
       </div>
     </section>

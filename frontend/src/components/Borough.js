@@ -21,7 +21,7 @@ const Borough = () => {
             return <div className="column is-one-third" key={borough.id}>
               <Link to={{ pathname: `borough/${borough.id}` }}>
                 <div className="card">
-                  <div className="card-content">
+                  <div className="card-content borough">
                     <h2 className="subtitle borough">{borough.name}</h2>
                   </div>
                   <div className="card-image">
