@@ -23,46 +23,40 @@ const Login = (props) => {
   }
 
   console.log(props)
-  return <section className="section">
-    <div className="container register">
-      <h1 className="title register">Login</h1>
-      <form
-        className="form"
-        onSubmit={handleSubmit}
-      >
-        <div className="field">
-          <div className="control has-icons-left has-icons-right">
-            <input
-              onChange={handleChange}
-              type="text"
-              name="email"
-              className="input is-rounded"
-              placeholder="Email"
-            />
-            <span className="icon is-small is-left">
-              <i className="fas fa-envelope"></i>
-            </span>
-          </div>
-        </div>
-        <div className="field">
-          <div className="control has-icons-left has-icons-right">
-            <input
-              onChange={handleChange}
-              type="password"
-              name="password"
-              className="input is-rounded"
-              placeholder="Password"
-            />
-            <span className="icon is-small is-left">
-              <i className="fas fa-lock"></i>
-            </span>
-          </div>
-        </div>
-        <button className="button is-success">
-          Login
-        </button>
-      </form>
-    </div>
+  return <section className="section login-section">
+    <img src='https://i.imgur.com/50EzKYk.png' />
+    <form
+      className="form"
+      onSubmit={handleSubmit}
+    >
+      <div className="control has-icons-left has-icons-right">
+        <input
+          onChange={handleChange}
+          type="text"
+          name="email"
+          className="input is-rounded"
+          placeholder="Email"
+        />
+        <span className="icon is-small is-left">
+          <i className="fas fa-envelope"></i>
+        </span>
+      </div>
+      <div className="control has-icons-left has-icons-right">
+        <input
+          onChange={handleChange}
+          type="password"
+          name="password"
+          className="input is-rounded"
+          placeholder="Password"
+        />
+        <span className="icon is-small is-left">
+          <i className="fas fa-lock"></i>
+        </span>
+      </div>
+      <button className="button is-success">
+        Login
+      </button>
+    </form>
   </section>
 
 

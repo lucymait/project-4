@@ -7,7 +7,7 @@ body {
 
 #root {
   background-color: whitesmoke;
-  height: 100%;
+  height: 100vh;
 }
 
 
@@ -98,6 +98,38 @@ body {
       }
     }
   }
+
+.login-section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+    img {
+      height: 50px;
+      margin: 10px;
+    }
+    .form {
+      height: 40%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      input {
+        font-family: 'Cantarell', sans-serif;
+        &:focus {
+          border: 1px solid rebeccapurple;
+        }
+      }
+      button {
+        font-family: 'Cantarell', sans-serif;
+        background-color: rebeccapurple;
+        color: whitesmoke;
+      }
+    }
+
+}
 
 
 
