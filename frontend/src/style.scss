@@ -161,3 +161,40 @@ section.section.borough {
   }
 
 }
+
+.card-content.class {
+  margin: 10px;
+  padding: 10px;
+  display: flex !important;
+  flex-direction: column !important;
+  flex-wrap: nowrap;
+}
+
+button.button {
+  font-family: 'Cantarell', sans-serif;
+  color:whitesmoke;
+  font-weight: bold;
+  background-color: rebeccapurple;
+  border: none;
+  outline: none;
+  &:hover {
+    color: rebeccapurple;
+    background-color:whitesmoke;
+  }
+}
+
+h2 {
+  font-family: 'Cantarell', sans-serif;
+}
+
+h1 {
+  font-family: 'Cantarell', sans-serif;
+}
+
+.card-content.borough {
+  background-color: rebeccapurple;
+}
+
+.subtitle.borough {
+  color: whitesmoke;
+}
