@@ -45,10 +45,10 @@ const SingleFitnessClass = (props) => {
         <div className="subtitle">
           <div className="title">
             <h2>{fitnessclass.name}</h2>
-            <h4>{fitnessclass.activity_type}</h4>
           </div>
           <h4 id='class-time'>{fitnessclass.time_of_class}</h4>
         </div>
+        <h4 id = 'activity-type'>Activity Type: {fitnessclass.activity_type}</h4>
         <div className="singlefitness-container">
           <h2> Location :</h2>
           <h5> {gymname}</h5>

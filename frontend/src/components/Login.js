@@ -22,7 +22,6 @@ const Login = (props) => {
       .catch(err => console.log(err))
   }
 
-  console.log(props)
   return <section className="section login-section">
     <img src='https://i.imgur.com/50EzKYk.png' />
     <form
