@@ -14,7 +14,7 @@ const SingleFitnessCard = ({  id, name, time_of_class  }) => {
         <Link to={{ pathname: `fitness/${id}` }}>
           <button className="button">More Info</button>
         </Link>
-        <button className="button">Book Now</button>
+        <Link to='/bookingconfirmation'><button className="button">Book Now</button></Link>
       </div>
     </div>
   </>

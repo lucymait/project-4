@@ -10,6 +10,7 @@ import Borough from './components/Borough'
 import FitnessClasses from './components/FitnessClasses'
 import SingleFitnessClass from './components/SingleFitnessClass'
 import Login from './components/Login'
+import BookingConfirmation from './components/BookingConfirmation'
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route exact path='/borough' component={Borough}></Route>
         <Route exact path='/borough/:id' component={FitnessClasses}></Route>
         <Route exact path='/borough/fitness/:id' component={SingleFitnessClass}></Route>
+        <Route exact path='/bookingconfirmation' component={BookingConfirmation}></Route>
         <Route exact path='/register' component={Register}></Route>
         <Route exact path='/login' component={Login}></Route>
         <Route exact path='/' component={Home}></Route>
