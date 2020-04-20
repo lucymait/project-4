@@ -11,10 +11,9 @@ body {
 }
 
 
-// .borough-image {
-//   height: 200px;
-//   width: 300px;
-// }
+.borough-image {
+  opacity: 0.9;
+}
 
 .hero-body {
   .container {
@@ -137,7 +136,6 @@ body {
   .header {
     // background-color: royalblue;
     display: flex;
-    padding-top: 30px;
   .subtitle {
     font-family: 'Cantarell', sans-serif;
     font-size: 15px;
@@ -248,7 +246,7 @@ section.section.borough {
 
 .navbar {
   width: 100%;
-  background-color: rgba($color:whitesmoke, $alpha: 0.7);
+  background-color: rgba($color:whitesmoke, $alpha: 1);
 }
 
 .navbar-menu {
@@ -256,19 +254,23 @@ section.section.borough {
 }
 
 a.navbar-item {
-  font-size: 18px;
   font-weight: bold;
-  font-family: 'Cantarell', sans-serif;
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 0;
+  position: relative;
+  line-height: 1.5;
 }
 
-.navbar-logo {
-  position: relative;
-  margin-left: 20px;
-  margin-top: 8px;
+#nav-styling {
+  display: flex;
+  justify-content: center;
 }
 
 a{
   color: rebeccapurple !important;
+  font-size: 20px;
+  font-family: 'Cantarell', sans-serif;
 }
 
 .booking-image {
