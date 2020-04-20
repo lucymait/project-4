@@ -163,8 +163,10 @@ body {
       justify-content: center;
       margin-right: 10px;
       button {
-        border: 1px solid rgb(67, 35, 99);
         border-radius: 50px !important;
+        background-color: rebeccapurple;
+        color: whitesmoke;
+        font-weight: 700;
       }
     }
   }
@@ -176,6 +178,46 @@ body {
   //   bottom: 0;
   //   left: 0;
   // }
+}
+
+.fitnessclass-section {
+  font-family: 'Cantarell', sans-serif;
+  height: 90%;
+  .container {
+    height: 105%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .subtitle {
+      border-bottom: 2px solid rebeccapurple;
+      padding-bottom: 10px;
+      font-weight: 700;
+    }
+    .singlefitness-container {
+      height: 10%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      h2 {
+        font-weight: 700;
+      }
+    }
+    .card {
+      border-top: 2px solid rgba(102, 51, 153, 0.4);
+      border-bottom: 2px solid rgba(102, 51, 153, 0.4);
+      padding: 10px 10px;
+      text-align: justify;
+      background-color: transparent;
+    }
+    .button {
+      background-color: rebeccapurple;
+      color: whitesmoke;
+      font-weight: 700;
+      width: 90%;
+      display: flex;
+      align-self: center;
+    }
+  }
 }
 
 
