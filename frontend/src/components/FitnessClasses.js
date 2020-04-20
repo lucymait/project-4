@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import 'bulma'
 import SingleFitnessCard from './SingleClassCard'
+import Navbar from './NavBar'
 
 const FitnessClasses = (props) => {
   const [borough, setBorough] = useState({ fitnessclass: [] })
@@ -32,6 +33,7 @@ const FitnessClasses = (props) => {
   }
 
   return <>
+    <Navbar />
     <section className="section classes-section">
       <div className="container">
         <div className="header">

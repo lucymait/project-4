@@ -11,10 +11,10 @@ body {
 }
 
 
-.borough-image {
-  height: 200px;
-  width: 300px;
-}
+// .borough-image {
+//   height: 200px;
+//   width: 300px;
+// }
 
 .hero-body {
   .container {
@@ -137,6 +137,7 @@ body {
   .header {
     // background-color: royalblue;
     display: flex;
+    padding-top: 30px;
   .subtitle {
     font-family: 'Cantarell', sans-serif;
     font-size: 15px;
@@ -179,13 +180,17 @@ body {
 }
 
 
-
-
-
+.card-content.borough {
+background-color:  #fcfcfc;
+border-radius: 25px;
+padding: 10px;
+opacity: 0.9;
+}
 
 
 .title.borough {
   color: rebeccapurple !important;
+  font-family: 'Cantarell', sans-serif;
   font-weight: bold !important;
   display: flex;
   justify-content: center;
@@ -193,13 +198,14 @@ body {
 
 
 section.section.borough {
-  padding-left: 50px !important;
-  padding-right: 50px !important;
+  // padding-left: 50px !important;
+  // padding-right: 50px !important;
 }
 
 .subtitle.borough {
   display: flex;
   justify-content: center;
+  color:rebeccapurple;
 }
 
 @media only screen and (min-width: 683px) {
@@ -211,3 +217,61 @@ section.section.borough {
 
 }
 
+.card.borough {
+  border-radius: 20px !important;
+  background-color:  #fcfcfc;
+}
+
+.card.borough:hover {
+  transform : translateY(-15px);
+}
+
+
+.borough-image {
+  border-radius: 20px !important;
+}
+
+.SearchForm {
+  padding-bottom: 20px;
+}
+
+.input.is-medium[type=text] {
+  width: 130px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+  border: 2px solid rebeccapurple;
+}
+
+.input.is-medium[type=text]:focus {
+  width: 100%;
+}
+
+.navbar {
+  width: 100%;
+  background-color: rgba($color:whitesmoke, $alpha: 0.7);
+}
+
+.navbar-menu {
+  background-color: transparent;
+}
+
+a.navbar-item {
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'Cantarell', sans-serif;
+}
+
+.navbar-logo {
+  position: relative;
+  margin-left: 20px;
+  margin-top: 8px;
+}
+
+a{
+  color: rebeccapurple !important;
+}
+
+.booking-image {
+  height: 125px;
+  width: 120px;
+}
