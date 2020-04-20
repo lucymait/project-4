@@ -4,6 +4,8 @@ import axios from 'axios'
 import moment from 'moment'
 import auth from '../../lib/auth'
 
+import bookingconfirmation from './BookingConfirmation'
+
 
 const SingleFitnessClass = (props) => {
   const [fitnessclass, setFitnessclass] = useState([])
@@ -13,13 +15,12 @@ const SingleFitnessClass = (props) => {
     fetch(`/api/fitness/${id}`)
       .then(resp => resp.json())
       .then(resp => {
+        console.log(resp)
         setFitnessclass(resp)
       })
   }, [])
-  // console.log(bookedclass)
 
   function handleBooking(e) {
-    const id = auth.getUserId()
     const data = {
       name: fitnessclass.name,
       gym: gymname,
@@ -29,10 +30,9 @@ const SingleFitnessClass = (props) => {
       activity_type: fitnessclass.activity_type,
       data_booked: moment().format('MMM Do')
     }
-    console.log(data)
     axios.post('/api/fitness/bookedclass/', data, { headers: { Authorization: `Bearer ${auth.getToken()}` } })
       .then(() => {
-        props.history.push(`/profile/${id}`)
+        props.history.push('/bookingconfirmation')
       })
   }
 
@@ -42,7 +42,13 @@ const SingleFitnessClass = (props) => {
   return <>
     <section className="section fitnessclass-section">
       <div className="container">
-        <h2 className="subtitle">{fitnessclass.name}</h2>
+        <div className="subtitle">
+          <div className="title">
+            <h2>{fitnessclass.name}</h2>
+            <h4>{fitnessclass.activity_type}</h4>
+          </div>
+          <h4 id='class-time'>{fitnessclass.time_of_class}</h4>
+        </div>
         <div className="singlefitness-container">
           <h2> Location :</h2>
           <h5> {gymname}</h5>
