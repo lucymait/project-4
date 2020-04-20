@@ -11,6 +11,7 @@ import FitnessClasses from './components/FitnessClasses'
 import SingleFitnessClass from './components/SingleFitnessClass'
 import Login from './components/Login'
 import BookingConfirmation from './components/BookingConfirmation'
+import Profile from './components/Profile'
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Route exact path='/borough/fitness/:id' component={SingleFitnessClass}></Route>
         <Route exact path='/bookingconfirmation' component={BookingConfirmation}></Route>
         <Route exact path='/register' component={Register}></Route>
+        <Route exact path='/profile' component={Profile}></Route>
         <Route exact path='/login' component={Login}></Route>
         <Route exact path='/' component={Home}></Route>
       </Switch>

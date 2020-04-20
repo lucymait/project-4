@@ -41,7 +41,7 @@ class PopulateFitnessClassSerializer(serializers.ModelSerializer):
     fields = ('id', 'name', 'gym', 'activity_type', 'instructor', 'time_of_class', 'description', 'comment')
 
 class PopulateBoroughSerializer(serializers.ModelSerializer):
-  fitnessclass = FitnessClassSerializer(many=True, required=False)
+  fitnessclass = PopulateFitnessClassSerializer(many=True, required=False)
   class Meta:
     model = Borough
     fields = ('id', 'name', 'image', 'fitnessclass')
