@@ -1,22 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import 'bulma'
 import { Link } from 'react-router-dom'
+import auth from '../../lib/auth'
 
 
-const BookingConfirmation = (props) => {
-  const [fitnessclass, setFitnessclass] = useState([])
+const BookingConfirmation = () => {
 
-  console.log(props)
-
-  useEffect(() => {
-    const id = props.match.params.id
-    fetch(`/api/fitness/${id}`)
-      .then(resp => resp.json())
-      .then(resp => {
-        console.log(resp)
-        setFitnessclass(resp)
-      })
-  }, []) 
+  const id = auth.getUserId()
 
   return <>
     {/* <h1>Hello World</h1> */}
@@ -28,9 +18,7 @@ const BookingConfirmation = (props) => {
         </div>
         <div className="subtitle">
           <p>Thank you for booking with FITBOOK </p><br/>
-          <p className="subtitle">Class Booked:{fitnessclass.name}</p>
-          <p className="subtitle">Date Booked:</p>
-          <Link to='/profile'><button className="button">View Booked Classes</button></Link>
+          <Link to={`/profile/${id}`}><button className="button">View Booked Classes</button></Link>
         </div>
       </div>
     </section>
