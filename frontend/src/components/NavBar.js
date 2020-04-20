@@ -26,34 +26,16 @@ class NavBar extends React.Component {
   render() {
     const isLoggedIn = auth.isLoggedIn()
 
-    return <nav className="navbar is-fixed-top" role="navigation" aria-label="main navigation">
-      <div className="navbar-brand">
-        <Link className="navbar-logo" to="/">
-          <img src='https://i.imgur.com/50EzKYk.png' alt="Logo" width="40px" height="30px" />
-        </Link>
-
-        <a
-          role="button"
-          className={`navbar-burger burger is-transparent ${this.state.navMobileOpen ? 'is-active' : ''}`}
-          aria-label="menu"
-          aria-expanded="false"
-          onClick={() => this.setState({ navMobileOpen: !this.state.navMobileOpen })}>
-
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
+    return <nav className="navbar is-fixed-bottom" id="nav-styling">
+      <div className="navbar-item">
+        <Link to="/borough">Explore</Link>
       </div>
-      <div className={`navbar-menu ${this.state.navMobileOpen ? 'is-active' : ''}`}>
-        <div className="navbar-end">
-          <div className="navbar-item">
-            <Link to="/borough">Explore</Link>
-          </div>
-          <div className="navbar-item"
-            onClick={() => this.HandleLogout()}>
-            <Link to="/">Log out</Link>
-          </div>
-        </div>
+      <div className="navbar-item">
+        <img src='https://i.imgur.com/50EzKYk.png' />
+      </div>
+      <div className="navbar-item"
+        onClick={() => this.HandleLogout()}>
+        <Link to="/">Log out</Link>
       </div>
     </nav>
   }
