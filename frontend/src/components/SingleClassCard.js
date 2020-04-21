@@ -6,7 +6,7 @@ import moment from 'moment'
 
 import auth from '../../lib/auth'
 
-const SingleFitnessCard = ( {  props, id, name, time_of_class, gym, instructor, description, activity_type }) => {
+const SingleFitnessCard = ( { props, id, name, time_of_class, gym, instructor, description, activity_type }) => {
 
   function handleBooking() {
     const data = {
@@ -23,7 +23,7 @@ const SingleFitnessCard = ( {  props, id, name, time_of_class, gym, instructor, 
         props.history.push('/bookingconfirmation')
       })
   }
-
+  console.log(props)
   return <>
     <div className="card class-card" key={id}>
       <div className="card-content">

@@ -53,7 +53,7 @@ const FitnessClasses = (props) => {
         </div>
         <div>
           {filteredClass.map(elem => {
-            return <SingleFitnessCard className='card class-card' key={elem.id} {...elem} />
+            return <SingleFitnessCard className='card class-card' props={props} key={elem.id} {...elem} />
           })}
         </div>
         <div className="empty-div"></div>

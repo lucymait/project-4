@@ -128,7 +128,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'fitness/media')
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'PROJECT-4')
+
+
 
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
@@ -140,5 +142,6 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication'
     ],
 }
+
 
 

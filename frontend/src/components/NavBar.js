@@ -17,14 +17,8 @@ class NavBar extends React.Component {
     this.props.history.push('/')
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.location.pathname !== prevProps.location.pathname) {
-      this.setState({ navMobileOpen: false })
-    }
-  }
 
   render() {
-    const isLoggedIn = auth.isLoggedIn()
 
     return <nav className="navbar is-fixed-bottom" id="nav-styling">
       <div className="navbar-item">
@@ -37,7 +31,8 @@ class NavBar extends React.Component {
         onClick={() => this.HandleLogout()}>
         <Link to="/">Log out</Link>
       </div>
-    </nav>
+    </nav> 
+
   }
 }
 export default withRouter(NavBar)

@@ -5,16 +5,20 @@ function setToken(token) {
   localStorage.setItem('token', token)
 }
 
-function isLoggedIn() {
+// function isLoggedIn() {
 
-  if (!localStorage.token) return false
-  const token = localStorage.token
-  jwt.verify( token, secret, function(err, decoded) {
-    if ( err ) {
-      localStorage.removeItem( 'token' )
-    }
-  })
-  return (localStorage.token)
+//   if (!localStorage.getItem('token')) return false
+//   const token = localStorage.getItem('token')
+//   jwt.verify( token, secret, function(err, decoded) {
+//     if ( err ) {
+//       localStorage.removeItem( 'token' )
+//     }
+//   })
+//   return (localStorage.getItem('token'))
+// }
+
+function isAuthorized() {
+  return getToken()
 }
 
 
@@ -23,6 +27,7 @@ function getToken() {
 }
 
 function logOut() {
+  console.log('Hello World')
   localStorage.removeItem('token')
 }
 
@@ -36,7 +41,7 @@ function getUserId() {
 export default {
   setToken,
   getToken,
-  isLoggedIn,
+  isAuthorized,
   logOut,
   getUserId
 }
