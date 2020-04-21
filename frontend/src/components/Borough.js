@@ -45,7 +45,7 @@ class Borough extends React.Component {
   render() {
     return <>
     <Navbar />
-    <section className="section borough">
+    <section className="section classes-section">
       <h1 className="title borough">Pick a Borough</h1>
       <SearchForm query={this.state.query} onChange={() => this.filterBoroughs(event)} />
       <div className="container is-mobile">

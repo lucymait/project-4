@@ -139,7 +139,7 @@ body {
     display: flex;
   .subtitle {
     font-family: 'Cantarell', sans-serif;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 700;
     width: 75%;
   }
@@ -312,11 +312,14 @@ opacity: 0.9;
 
 
 .title.borough {
-  color: rebeccapurple !important;
   font-family: 'Cantarell', sans-serif;
   font-weight: bold !important;
-  display: flex;
-  justify-content: center;
+  // display: flex;
+  // justify-content: center;
+  font-size: 25px;
+  font-weight: 700;
+  border-bottom: 2px solid rebeccapurple;
+  padding-bottom: 10px;
 }
 
 
@@ -324,8 +327,11 @@ opacity: 0.9;
 .subtitle.borough {
   display: flex;
   justify-content: center;
-  color:rebeccapurple;
+  // color:rebeccapurple;
+  font-size: 12px;
+  font-weight: bold;
 }
+
 
 @media only screen and (min-width: 683px) {
   .form {
@@ -347,7 +353,7 @@ opacity: 0.9;
 
 
 .borough-image {
-  border-radius: 20px !important;
+  border-radius: 0px 0px 20px 20px !important;
 }
 
 .SearchForm {
@@ -358,7 +364,8 @@ opacity: 0.9;
   width: 130px;
   // -webkit-transition: width 0.4s ease-in-out;
   transition: width 0.4s ease-in-out;
-  border: 2px solid rebeccapurple;
+  border: 1px solid rebeccapurple;
+  font-size: 15px;
 }
 
 .input.is-medium[type=text]:focus {
@@ -397,4 +404,8 @@ a{
 .booking-image {
   height: 125px;
   width: 120px;
+}
+
+.column {
+  padding: 18px;
 }

@@ -11,6 +11,8 @@ const Login = (props) => {
     setLoginData(data)
   }
 
+  console.log(LoginData)
+
   function handleSubmit(event) {
     event.preventDefault()
     axios.post('/api/login', LoginData)
