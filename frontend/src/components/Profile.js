@@ -37,9 +37,17 @@ const Profile = () => {
           <h3 className="profile-name">Welcome back {profile.username}!</h3>
           <img src={profile.image === null ? 'https://static.thenounproject.com/png/629576-200.png' : `http://localhost:8000${profile.image}`} />
         </div>
-        <h2>Booked Classes</h2>
+        {profile.fitness.length === 0 ? null : <h2>Today's Classes</h2>}
         <div className="booked-classes">
-          {profile.fitness.length === 0 ? <h2>No Classes Booked</h2> :
+          {profile.fitness.length === 0 ?
+
+            <div className='noClassesBooked'>
+              <p> No classes booked for today! </p>
+              <button className="button">Browse Classes</button>
+            </div>
+
+            :
+
             profile.fitness.map(bookedclass => {
               return <div className='card' id={bookedclass.id} key={bookedclass.id}>
                 <div className="card-content">

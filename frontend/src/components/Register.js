@@ -69,8 +69,6 @@ const Register = (props) => {
         </span>
         {errors.email ? <p>{errors.email[0]}
         </p> : null}
-        {errors === '' ? <p> email already exisits
-        </p> : null}
       </div>
       <div className="control has-icons-left has-icons-right">
         <input

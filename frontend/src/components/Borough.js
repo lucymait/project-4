@@ -15,7 +15,7 @@ class Borough extends React.Component {
 
     }
   }
-  // console.log(filteredBorough)
+
 
   componentDidMount() {
     axios.get('/api/fitness/borough/')
@@ -24,6 +24,9 @@ class Borough extends React.Component {
           boroughs: response.data,
           filteredBoroughs: response.data
         })
+      })
+      .then(() => {
+        console.log(this.state.boroughs)
       })
       .catch(error => console.error(error))
   }
@@ -39,8 +42,7 @@ class Borough extends React.Component {
       filteredBoroughs: filteredBoroughs
     })
   }
-
-  // console.log(searchQuery)
+  
 
   render() {
     return <>
@@ -51,7 +53,7 @@ class Borough extends React.Component {
       <div className="container is-mobile">
         <div className="columns is-mobile is-multiline">
           {this.state.filteredBoroughs.map((borough) => {
-            return <BoroughCard key={borough.id} {...borough} />
+            return <BoroughCard props={this.props} key={borough.id} {...borough} />
           }
           )}
         </div>

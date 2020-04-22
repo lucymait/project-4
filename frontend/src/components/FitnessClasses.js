@@ -33,11 +33,22 @@ const FitnessClasses = (props) => {
     }
   }
 
+  function previousPage() {
+    props.history.goBack()
+  }
+
   return <>
     <Navbar />
     <section className="section classes-section">
+      <div className="header">
+        <button onClick={() => previousPage()}>
+          <i className="fas fa-angle-left is-medium fas fa-lg"></i>
+        </button>
+        <h2 className="date">Date: {moment().format('MMMM Do')}</h2>
+      </div>
+      <div id='buffer'></div>
       <div className="container">
-        <div className="header">
+        <div className="title">
           <h2 className="subtitle">{borough.name}</h2>
           <div className="select">
             <select onChange={(e) => filterClasses(e)}>
@@ -52,7 +63,6 @@ const FitnessClasses = (props) => {
             </select>
           </div>
         </div>
-        <h2 className="date">Date: {moment().format('MMMM Do')}</h2>
         <div>
           {filteredClass.map(elem => {
             return <SingleFitnessCard className='card class-card' props={props} key={elem.id} {...elem} />

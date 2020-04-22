@@ -171,15 +171,51 @@ body {
 .classes-section {
   background-color: whitesmoke;
   font-family: 'Cantarell', sans-serif;
+  padding: 0px;
   .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: fixed;
+    width: 100%;
+    height: 8%;
+    z-index: 10;
+    background-color: whitesmoke;
+    padding-bottom: 5px;
+    button {
+      margin: 0 25px;
+      background-color: #fcfcfc;
+      height: 25px;
+      border-radius: 20px;
+      border: 2px solid rebeccapurple;
+      background-color: transparent;
+    }
+    h2 {
+      margin: 0 25px;
+      padding: 0;
+    }
+  }
+  #buffer {
+    height: 80px;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+  }
+  .title {
     // background-color: royalblue;
     display: flex;
+    width: 95%;
+    align-self: center;
+    justify-content: space-between;
   .subtitle {
     font-family: 'Cantarell', sans-serif;
     font-size: 18px;
     font-weight: 700;
-    width: 75%;
+    width: 65%;
     padding-bottom: 0px;
+
   }
   .select {
     font-size: 12px;
@@ -208,14 +244,6 @@ body {
       }
     }
   }
-  // .navbar-test {
-  //   background-color: salmon;
-  //   width: 100%;
-  //   height: 5%;
-  //   position: fixed;
-  //   bottom: 0;
-  //   left: 0;
-  // }
 }
 
 .fitnessclass-section {
@@ -226,38 +254,39 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+      button {
+        background-color: rebeccapurple;
+        border-radius: 20px;
+        border: 2px solid rebeccapurple;
+        color: whitesmoke;
+        font-weight: 700;
+        padding: 2px 6px;
+      }
     .subtitle {
       border-bottom: 2px solid rebeccapurple;
       padding-bottom: 10px;
       display: flex;
+      flex-direction: column;
       height: 10%;
       justify-content: space-between;
       margin: 0;
-      #class-time {
-        height: 50%;
-        display: flex;
-        align-self: center;
-        font-size: 23px;
-      }
       .title {
         height: 118%;
         font-size: 23px;
         display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
+        justify-content: space-between;
         margin: 0;
+        #class-time {
+          height: 50%;
+          display: flex;
+          align-self: center;
+          font-size: 23px;
+        }
           h2 { 
           font-weight: 700;
         }
-          h4 {
-        font-size: 18px;
-        }
     }
   }
-    #activity-type {
-      display: flex;
-      align-self: center;
-    }
     .singlefitness-container {
       height: 10%;
       display: flex;
@@ -294,11 +323,9 @@ body {
     flex-direction: column;
     border-radius: 22px;
       h2 {
-        font-size: 22px;
+        font-size: 18px;
         display: flex;
-        align-self: center;
         margin-bottom: 10px;
-        font-weight: 700;
       }
       .profile-header {
         height: 35%;
@@ -306,8 +333,9 @@ body {
         flex-direction: column;
         justify-content: space-evenly;
         align-items: center;
-        padding: 10px;
+        margin-bottom: 10px;
         font-size: 20px;
+        border-bottom: 2px solid rebeccapurple;
         img {
           height: 140px;
           width: 100px;
@@ -321,6 +349,25 @@ body {
         display: flex;
         flex-direction: column;
         overflow-x: scroll;
+        align-items: center;
+        height: 65%;
+        .noClassesBooked {
+          border: 1px solid rgb(167, 164, 164);
+          box-shadow: 1px 1px darkgray;
+          background-color: rgb(231, 231, 231);
+          border-radius: 10px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-evenly;
+          align-items: center;
+          text-align: center;
+          height: 180px;
+          width: 300px;
+          p {
+            font-size: 18px;
+            font-weight: 700;
+          }
+        }
         .card {
           background-color: snow;
           margin-bottom: 5px;
@@ -341,42 +388,6 @@ body {
       }
   }
 }
-
-.not-logged-in {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  section {
-    width: 90%;
-    height: 60%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    p {
-      font-size: 18px;
-    }
-    img {
-      height: 120px;
-      width: 120px;
-    }
-    .buttons {
-      width: 90%;
-      display: flex;
-      justify-content: space-around;
-      button {
-        background-color: rebeccapurple;
-        color: whitesmoke;
-        font-weight: 700;
-        height: 55px;
-        width: 100px;
-      }
-    }
-}
-}
-
 
 
 .card-content.borough {
