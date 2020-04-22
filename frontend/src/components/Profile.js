@@ -10,7 +10,6 @@ const Profile = () => {
   const [profile, setProfile] = useState({ fitness: [] })
 
   useEffect(() => {
-    console.log(auth.getToken())
     fetch('api/profile', { headers: { Authorization: `Bearer ${auth.getToken()}` } })
       .then(resp => resp.json())
       .then(resp => {
@@ -30,7 +29,7 @@ const Profile = () => {
           })
       })
   }
-  
+
   return <>
     <section className="section profile-section">
       <div className="container">
@@ -39,17 +38,19 @@ const Profile = () => {
           <img src={profile.image === null ? 'https://static.thenounproject.com/png/629576-200.png' : `http://localhost:8000${profile.image}`} />
         </div>
         <h2>Booked Classes</h2>
-        <div className="booked-classesi">
-          {profile.fitness.map(bookedclass => {
-            return <div className='card' id={bookedclass.id} key={bookedclass.id}>
-              <div className="card-content">
-                <h3>{bookedclass.name}</h3>
-                <p>{bookedclass.time_of_class}</p>
-                <p>Date: {bookedclass.data_booked}</p>
+        <div className="booked-classes">
+          {profile.fitness.length === 0 ? <h2>No Classes Booked</h2> :
+            profile.fitness.map(bookedclass => {
+              return <div className='card' id={bookedclass.id} key={bookedclass.id}>
+                <div className="card-content">
+                  <h3>{bookedclass.name}</h3>
+                  <p>{bookedclass.time_of_class}</p>
+                  <p>Date Booked: {bookedclass.data_booked}</p>
+                </div>
+                <button onClick={(e) => deleteFitnessClass(e)} className="button">Cancel</button>
               </div>
-              <button onClick={(e) => deleteFitnessClass(e)} className="button">Cancel</button>
-            </div>
-          })}
+            })}
+
         </div>
       </div>
     </section>
