@@ -11,11 +11,10 @@ const SingleFitnessClass = (props) => {
 
   useEffect(() => {
     const id = props.match.params.id
-    fetch(`/api/fitness/${id}`)
-      .then(resp => resp.json())
+    axios.get(`/api/fitness/${id}`)
       .then(resp => {
-        console.log(resp)
-        setFitnessclass(resp)
+        // console.log(resp)
+        setFitnessclass(resp.data)
       })
   }, [])
 

@@ -4,6 +4,7 @@ import 'bulma'
 import SingleFitnessCard from './SingleClassCard'
 import Navbar from './NavBar'
 import moment from 'moment'
+import axios from 'axios'
 
 const FitnessClasses = (props) => {
   const [borough, setBorough] = useState({ fitnessclass: [] })
@@ -12,12 +13,11 @@ const FitnessClasses = (props) => {
 
   useEffect(() => {
     const id = props.match.params.id
-    fetch(`/api/fitness/borough/${id}`)
-      .then(resp => resp.json())
+    axios.get(`/api/fitness/borough/${id}`)
       .then(resp => {
-        setBorough(resp)
-        setFilteredClass(resp.fitnessclass)
-        setAllClasses(resp.fitnessclass)
+        setBorough(resp.data)
+        setFilteredClass(resp.data.fitnessclass)
+        setAllClasses(resp.data.fitnessclass)
       })
   }, [])
 

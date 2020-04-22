@@ -3,7 +3,7 @@ import 'bulma'
 import { Link } from 'react-router-dom'
 import auth from '../../lib/auth'
 import moment from 'moment'
-// import axios from 'axios'
+import axios from 'axios'
 
 
 const BookingConfirmation = () => {
@@ -12,16 +12,14 @@ const BookingConfirmation = () => {
 
   useEffect(() => {
     console.log(auth.getToken())
-    fetch('api/profile', { headers: { Authorization: `Bearer ${auth.getToken()}` } })
-      .then(resp => resp.json())
+    axios.get('api/profile', { headers: { Authorization: `Bearer ${auth.getToken()}` } })
       .then(resp => {
-        setFitnessClass(resp)
+        setFitnessClass(resp.data)
       })
   }, [])
 
 
   return <>
-    {/* <h1>Hello World</h1> */}
     <section className="section">
       <div className="container has-text-centered">
         <img className="booking-image" src='https://i.imgur.com/50EzKYk.png' />

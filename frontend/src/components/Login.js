@@ -18,7 +18,6 @@ const Login = (props) => {
     event.preventDefault()
     axios.post('/api/login', LoginData)
       .then(resp => {
-        // const token = resp.data.token
         auth.setToken(resp.data.token)
         props.history.push('/profile')
       })

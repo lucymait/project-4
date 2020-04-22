@@ -10,10 +10,9 @@ const Profile = () => {
   const [profile, setProfile] = useState({ fitness: [] })
 
   useEffect(() => {
-    fetch('api/profile', { headers: { Authorization: `Bearer ${auth.getToken()}` } })
-      .then(resp => resp.json())
+    axios.get('api/profile', { headers: { Authorization: `Bearer ${auth.getToken()}` } })
       .then(resp => {
-        setProfile(resp)
+        setProfile(resp.data)
       })
   }, [])
 
@@ -22,10 +21,9 @@ const Profile = () => {
     const id = (e.target.parentNode.id)
     axios.delete(`api/fitness/bookedclass/${id}`, { headers: { Authorization: `Bearer ${auth.getToken()}` } })
       .then(() => {
-        fetch('api/profile', { headers: { Authorization: `Bearer ${auth.getToken()}` } })
-          .then(resp => resp.json())
+        axios.get('api/profile', { headers: { Authorization: `Bearer ${auth.getToken()}` } })
           .then(resp => {
-            setProfile(resp)
+            setProfile(resp.data)
           })
       })
   }

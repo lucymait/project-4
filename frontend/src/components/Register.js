@@ -7,9 +7,7 @@ import auth from '../../lib/auth'
 
 const Register = (props) => {
   const [registerData, setRegisterData] = useState({ image: '' })
-  // const [errors, setErrors] = useState({ username: '', email: '', password: null, password_confirmation: null, image: '' })
   const [errors, setErrors] = useState({})
-  // const { register } = useForm()
 
 
   function handleChange(event) {
@@ -26,9 +24,9 @@ const Register = (props) => {
     const imageInput = document.getElementsByClassName('image-field')
     const image = imageInput.image.files
     body.append('email', registerData.email)
-    body.append('username', registerData.username)
+    body.append('username', registerData.username ? registerData.username : '')
     body.append('password', registerData.password ? registerData.password : '')
-    body.append('password_confirmation', registerData.password_confirmation)
+    body.append('password_confirmation', registerData.password_confirmation ? registerData.password_confirmation : '')
     body.append('image', image.length === 0 ? registerData.image : image[0])
     axios.post('/api/register',
       body)
@@ -126,7 +124,7 @@ const Register = (props) => {
       <button className='button'>
         Register
       </button>
-      {errors.email ? <p className="registered">
+      {errors.username ? <p className="registered">
         Already have an account?<Link className="registered" to='/login'>Login</Link>
       </p> : null}
     </form>
