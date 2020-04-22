@@ -3,7 +3,7 @@ import axios from 'axios'
 
 const Register = (props) => {
   const [registerData, setRegisterData] = useState({})
-  const [errors, setErrors] = useState({ username: [0], email: [0], password: [0], password_confirmation: [0] })
+  const [errors, setErrors] = useState({ username: '', email: '', password: '', password_confirmation: '', image: '' })
   // const { register } = useForm()
 
   function handleChange(event) {
@@ -15,10 +15,9 @@ const Register = (props) => {
 
   function handleSubmit(event) {
     event.preventDefault()
-    const imageInput = document.getElementsByClassName('image')
+    const imageInput = document.getElementsByClassName('image-field')
     const image = imageInput.image.files
-    const body = new FormData(form)
-    const form = document.querySelectorAll('form')
+    const body = new FormData()
     body.append('email', registerData.email)
     body.append('username', registerData.username)
     body.append('password', registerData.password)
@@ -31,16 +30,12 @@ const Register = (props) => {
         props.history.push('/login')
       })
       .catch(err => {
-        console.log(err.response.data)
-        setErrors(err.response.request.response)
+        setErrors(err.response.data)
       })
   }
 
   console.log(errors)
 
-  // const emailError = errors ? 
-
-  // console.log(registerData)
   return <section className="section register-section">
     <img src='https://i.imgur.com/50EzKYk.png' />
     <form
@@ -59,10 +54,9 @@ const Register = (props) => {
         <span className="icon is-small is-left">
           <i className="fas fa-envelope"></i>
         </span>
+        {errors.email ? <p>{errors.email[0]}
+        </p> : null}
       </div>
-      {!errors.email && <small className="help is-danger">
-        {'Enter a valid email address'}
-      </small>}
       <div className="control has-icons-left has-icons-right">
         <input
           onChange={handleChange}
@@ -74,10 +68,9 @@ const Register = (props) => {
         <span className="icon is-small is-left">
           <i className="fas fa-user"></i>
         </span>
+        {errors.username ? <p>{errors.username[0]}
+        </p> : null}
       </div>
-      {!errors.username && <small className="help is-danger">
-        {'A user with that username already exists'}
-      </small>}
       <div className="control has-icons-left has-icons-right">
         <input
           onChange={handleChange}
@@ -89,10 +82,9 @@ const Register = (props) => {
         <span className="icon is-small is-left">
           <i className="fas fa-lock"></i>
         </span>
+        {errors.password ? <p>{errors.password[0]}
+        </p> : null}
       </div>
-      {!errors.password && <small className="help is-danger">
-        {'This password is too short. It must contain at least 8 characters'}
-      </small>}
       <div className="control has-icons-left has-icons-right">
         <input
           onChange={handleChange}
@@ -105,21 +97,19 @@ const Register = (props) => {
         <span className="icon is-small is-left">
           <i className="fas fa-lock"></i>
         </span>
+        {errors.password_confirmation ? <p>{errors.password_confirmation[0]}
+        </p> : null}
       </div>
-      {!errors.password_confirmation && <small className="help is-danger">
-        {'Passwords do not match'}
-      </small>}
-      <div className="file-upload">
+      <div className="image-input">
         <input
           onChange={handleChange}
           type="file"
           name="image"
-          className="input is-rounded image"
+          className="image-field"
         />
+        {errors.image ? <p>{errors.image[0]}
+        </p> : null}
       </div>
-      {errors.image && <small className="help is-danger">
-        {errors.image}
-      </small>}
       <button className='button'>
         Register
       </button>

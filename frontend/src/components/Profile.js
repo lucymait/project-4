@@ -39,7 +39,7 @@ const Profile = () => {
           <img src={profile.image === null ? 'https://static.thenounproject.com/png/629576-200.png' : `http://localhost:8000${profile.image}`} />
         </div>
         <h2>Booked Classes</h2>
-        <div className="booked-classes ">
+        <div className="booked-classesi">
           {profile.fitness.map(bookedclass => {
             return <div className='card' id={bookedclass.id} key={bookedclass.id}>
               <div className="card-content">

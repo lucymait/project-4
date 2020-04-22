@@ -19,13 +19,18 @@ class RegisterView(CreateAPIView):
             serializer.save()
             return Response({'message': 'Registration successful'})
         return Response(serializer.errors, status=422)
+    
+    # def clean_username(self, email):
+    #     if User.objects.get(email=email).exists():
+    #         raise ValidationError("Email is not unique")
+
+
 class LoginView(APIView):
-    # This is not an endpoint, its a helper function used when we POST
     def get_user(self, email):
         try:
             return User.objects.get(email=email)
         except User.DoesNotExist:
-            raise PermissionDenied({'message': 'email does not exist'})
+            raise PermissionDenied({'message': 'Not Registered'})
     def post(self, request):
         email = request.data.get('email')
         password = request.data.get('password')
@@ -34,7 +39,7 @@ class LoginView(APIView):
         # If this password is not the same as the password saved for the user
         # check_password is given to us by django.
         if not user.check_password(password):
-            raise PermissionDenied({'message': 'Invalid credentials'})
+            raise PermissionDenied({'message': 'Incorrect Password'})
         # Create a JWT for the user, and send it back
         token = jwt.encode({'sub': user.id}, settings.SECRET_KEY, algorithm='HS256')
         return Response({'token': token, 'message': f'Welcome back {user.username}!'})
