@@ -142,6 +142,7 @@ body {
     font-size: 18px;
     font-weight: 700;
     width: 75%;
+    padding-bottom: 0px;
   }
   .select {
     font-size: 12px;
@@ -408,4 +409,15 @@ a{
 
 .column {
   padding: 18px;
+}
+
+.date {
+  padding-bottom: 10px;
+}
+
+.exit {
+  margin: 0px;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 10px;
 }

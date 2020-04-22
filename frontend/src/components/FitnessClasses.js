@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import 'bulma'
 import SingleFitnessCard from './SingleClassCard'
 import Navbar from './NavBar'
+import moment from 'moment'
 
 const FitnessClasses = (props) => {
   const [borough, setBorough] = useState({ fitnessclass: [] })
@@ -51,6 +52,7 @@ const FitnessClasses = (props) => {
             </select>
           </div>
         </div>
+        <h2 className="date">Date: {moment().format('MMMM Do')}</h2>
         <div>
           {filteredClass.map(elem => {
             return <SingleFitnessCard className='card class-card' props={props} key={elem.id} {...elem} />

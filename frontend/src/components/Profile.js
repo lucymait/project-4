@@ -40,12 +40,12 @@ const Profile = () => {
         </div>
         <h2>Booked Classes</h2>
         <div className="booked-classes ">
-          {profile.fitness}
           {profile.fitness.map(bookedclass => {
             return <div className='card' id={bookedclass.id} key={bookedclass.id}>
               <div className="card-content">
                 <h3>{bookedclass.name}</h3>
                 <p>{bookedclass.time_of_class}</p>
+                <p>Date: {bookedclass.data_booked}</p>
               </div>
               <button onClick={(e) => deleteFitnessClass(e)} className="button">Cancel</button>
             </div>

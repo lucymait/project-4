@@ -3,6 +3,7 @@ import 'bulma'
 import axios from 'axios'
 import moment from 'moment'
 import auth from '../../lib/auth'
+import { Link } from 'react-router-dom'
 
 import bookingconfirmation from './BookingConfirmation'
 
@@ -42,6 +43,9 @@ const SingleFitnessClass = (props) => {
   return <>
     <section className="section fitnessclass-section">
       <div className="container">
+        <div className="exit">
+          <Link className="delete" to="/borough"></Link>
+        </div>
         <div className="subtitle">
           <div className="title">
             <h2>{fitnessclass.name}</h2>
