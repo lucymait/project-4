@@ -7,9 +7,7 @@ import auth from '../../lib/auth'
 
 const Register = (props) => {
   const [registerData, setRegisterData] = useState({ image: '' })
-  // const [errors, setErrors] = useState({ username: '', email: '', password: null, password_confirmation: null, image: '' })
   const [errors, setErrors] = useState({})
-  // const { register } = useForm()
 
 
   function handleChange(event) {

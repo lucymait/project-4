@@ -12,7 +12,6 @@ const Home = () => (
         </div>
         <div>
           <p className="description">Search, Find & Book classes</p>
-          {/* <p className="description">fitness classes in your area</p> */}
           <p className="description">within 24hrs</p>
         </div>
         <div className="subtitle">
