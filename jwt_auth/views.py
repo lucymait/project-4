@@ -19,10 +19,6 @@ class RegisterView(CreateAPIView):
             serializer.save()
             return Response({'message': 'Registration successful'})
         return Response(serializer.errors, status=422)
-    
-    # def clean_username(self, email):
-    #     if User.objects.get(email=email).exists():
-    #         raise ValidationError("Email is not unique")
 
 
 class LoginView(APIView):
@@ -43,6 +39,7 @@ class LoginView(APIView):
         # Create a JWT for the user, and send it back
         token = jwt.encode({'sub': user.id}, settings.SECRET_KEY, algorithm='HS256')
         return Response({'token': token, 'message': f'Welcome back {user.username}!'})
+        
 class ProfileView(APIView):
   permission_classes = (IsAuthenticated, )
   def get(self, request):

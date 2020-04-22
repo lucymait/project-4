@@ -31,16 +31,6 @@ const BookingConfirmation = () => {
         </div>
         <div className="subtitle">
           <p className="booking-p">Thank you {fitnessClass.username} for booking with FITBOOK </p><br />
-          {/* <div className="booked-classes">
-            {fitnessClass.fitness.map(bookedclass => {
-              return <div className='card' id={bookedclass.id} key={bookedclass.id}>
-                <div className="card-content">
-                  <h3>{bookedclass.name}</h3>
-                  <p>{bookedclass.time_of_class}</p>
-                </div>
-              </div>
-            })}
-          </div> <br/> */}
           <Link to={`/profile/${id}`}><button className="button booking">View Booked Classes</button></Link>
         </div>
       </div>

@@ -14,11 +14,12 @@ import BookingConfirmation from './components/BookingConfirmation'
 import Profile from './components/Profile'
 
 
+
 const App = () => {
   return (
     <HashRouter>
       <Switch>
-        <Route exact path='/profile/:id' component={Profile}></Route>
+        <>
         <Route exact path='/borough' component={Borough}></Route>
         <Route exact path='/borough/:id' component={FitnessClasses}></Route>
         <Route exact path='/borough/fitness/:id' component={SingleFitnessClass}></Route>
@@ -27,6 +28,7 @@ const App = () => {
         <Route exact path='/profile' component={Profile}></Route>
         <Route exact path='/login' component={Login}></Route>
         <Route exact path='/' component={Home}></Route>
+        </>
       </Switch>
     </HashRouter>
   )

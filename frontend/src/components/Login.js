@@ -20,7 +20,7 @@ const Login = (props) => {
       .then(resp => {
         // const token = resp.data.token
         auth.setToken(resp.data.token)
-        props.history.push(`/profile/${auth.getUserId()}`)
+        props.history.push('/profile')
       })
       .catch(err => {
         setErrror(err.response.data)

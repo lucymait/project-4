@@ -3,9 +3,12 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 
 
+import auth from '../../lib/auth'
+
 const Register = (props) => {
-  const [registerData, setRegisterData] = useState({})
-  const [errors, setErrors] = useState({ username: '', email: '', password: null, password_confirmation: null, image: '' })
+  const [registerData, setRegisterData] = useState({ image: '' })
+  // const [errors, setErrors] = useState({ username: '', email: '', password: null, password_confirmation: null, image: '' })
+  const [errors, setErrors] = useState({})
   // const { register } = useForm()
 
 
@@ -15,29 +18,36 @@ const Register = (props) => {
     setRegisterData(data)
   }
 
+  const body = new FormData()
+
 
   function handleSubmit(event) {
     event.preventDefault()
     const imageInput = document.getElementsByClassName('image-field')
     const image = imageInput.image.files
-    const body = new FormData()
     body.append('email', registerData.email)
     body.append('username', registerData.username)
     body.append('password', registerData.password ? registerData.password : '')
     body.append('password_confirmation', registerData.password_confirmation)
-    body.append('image', image[0], image[0].name)
+    body.append('image', image.length === 0 ? registerData.image : image[0])
     axios.post('/api/register',
       body)
-      .then(resp => {
-        console.log(resp.data)
-        props.history.push('/login')
+      .then(() => {
+        const login = new FormData()
+        login.append('email', registerData.email)
+        login.append('password', registerData.password)
+        axios.post('/api/login', login)
+          .then(resp => {
+            auth.setToken(resp.data.token)
+            props.history.push('/profile')
+          })
       })
       .catch(err => {
         setErrors(err.response.data)
       })
   }
 
-  console.log(errors)
+
 
   return <section className="section register-section">
     <img src='https://i.imgur.com/50EzKYk.png' />
@@ -58,6 +68,8 @@ const Register = (props) => {
           <i className="fas fa-envelope"></i>
         </span>
         {errors.email ? <p>{errors.email[0]}
+        </p> : null}
+        {errors === '' ? <p> email already exisits
         </p> : null}
       </div>
       <div className="control has-icons-left has-icons-right">
@@ -110,9 +122,9 @@ const Register = (props) => {
           name="image"
           className="image-field"
         />
-        {errors.image ? <p>{errors.image[0]}
-        </p> : null}
       </div>
+      {errors.image ? <p>{errors.image[0]}
+      </p> : null}
       <button className='button'>
         Register
       </button>

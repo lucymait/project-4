@@ -35,7 +35,12 @@ class UserSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError({'password': err.messages})
 
         data['password'] = make_password(password)
-        return data
+        return data 
+
+
+
+
+
 
     class Meta:
         model = User
