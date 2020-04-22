@@ -11,8 +11,9 @@ const Home = () => (
           <img src='https://i.imgur.com/50EzKYk.png'/>
         </div>
         <div>
-          <p className="description">Search, Find & Book classes</p>
-          <p className="description">within 24hrs</p>
+          <p className="description">With Fitbook you can: <br/>
+            <strong>Search</strong>, <strong>Find</strong> &  <strong>Book</strong> <br/>
+            classes, within 24hrs!</p>
         </div>
         <div className="subtitle">
           <Link to='/register'><button className="button is-large">Register</button></Link>

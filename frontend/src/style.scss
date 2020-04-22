@@ -17,12 +17,14 @@ body {
 }
 
 .hero-body {
+  padding: 0px !important;
   .container {
-    height: 500px;
+    height: 560px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    padding: 0px;
     // background-color: royalblue;
     .title {
       // background-color: salmon;
@@ -49,9 +51,10 @@ body {
       .subtitle {
         // background-color: rosybrown;
         width: 280px;
-        height: 150px;
+        // height: 150px;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        padding-top: 40px;
           button {
             font-family: 'Cantarell', sans-serif;
             color: rebeccapurple;
@@ -532,15 +535,17 @@ a{
   padding-bottom: 20px;
 }
 
-.description {
+p.description {
   font-family: 'Cantarell', sans-serif;
-  font-size: 13px;
-  padding-left: 23px;
-  padding-right: 23px;
-  opacity: 0.8;
+  font-size: 18px;
+  color: rebeccapurple;
 }
 
-.registered {
+p.registered {
   font-size: 14px;
   padding-top: 15px;
+}
+
+strong {
+  color: rebeccapurple;
 }
