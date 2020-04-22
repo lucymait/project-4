@@ -45,6 +45,7 @@ const Profile = () => {
               <div className="card-content">
                 <h3>{bookedclass.name}</h3>
                 <p>{bookedclass.time_of_class}</p>
+                <p>Date: {bookedclass.data_booked}</p>
               </div>
               <button onClick={(e) => deleteFitnessClass(e)} className="button">Cancel</button>
             </div>
