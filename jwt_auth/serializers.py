@@ -23,6 +23,9 @@ class UserSerializer(serializers.ModelSerializer):
         password = data.pop('password')
         password_confirmation = data.pop('password_confirmation')
 
+        if not password:
+            raise serializers.ValidationError({'password': 'Not a valid Password'})
+
         if password != password_confirmation:
             raise serializers.ValidationError({'password_confirmation': 'Passwords do not match'})
 

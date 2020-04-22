@@ -237,10 +237,11 @@ body {
         height: 50%;
         display: flex;
         align-self: center;
-        font-size: 25px;
+        font-size: 23px;
       }
       .title {
         height: 118%;
+        font-size: 23px;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
@@ -272,6 +273,7 @@ body {
       padding: 10px 10px;
       text-align: justify;
       background-color: transparent;
+      margin-top: 5px;
     }
     .button {
       background-color: rebeccapurple;
@@ -307,10 +309,11 @@ body {
         padding: 10px;
         font-size: 20px;
         img {
-          height: 120px;
-          width: 120px;
+          height: 140px;
+          width: 100px;
           display: flex;
           border-radius: 50%;
+          padding-bottom: 10px;
         }
       }
       .booked-classes {
@@ -457,4 +460,52 @@ a{
   display: flex;
   justify-content: flex-end;
   padding-right: 10px;
+}
+
+.confirmation {
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.booking-p {
+  padding-bottom: 30px;
+}
+
+.button.booking {
+  background-color: rebeccapurple;
+  color: whitesmoke;
+  font-weight: 600;
+  height: 45px;
+}
+
+.profile-name {
+  padding-bottom: 10px;
+}
+
+.date-subtitle {
+  font-size: 15px;
+  font-family: 'Cantarell', sans-serif;
+  padding-bottom: 20px;
+  padding-top: 5px;
+}
+
+.container.has-text-centered {
+  margin: 5px;
+}
+
+.instructor {
+  padding-bottom: 20px;
+}
+
+.description {
+  font-family: 'Cantarell', sans-serif;
+  font-size: 13px;
+  padding-left: 23px;
+  padding-right: 23px;
+  opacity: 0.8;
+}
+
+.registered {
+  font-size: 14px;
+  padding-top: 15px;
 }

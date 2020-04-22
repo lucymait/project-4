@@ -35,11 +35,11 @@ const Profile = () => {
     <section className="section profile-section">
       <div className="container">
         <div className="profile-header">
-          <h3>Welcome back {profile.username}!</h3>
+          <h3 className="profile-name">Welcome back {profile.username}!</h3>
           <img src={profile.image === null ? 'https://static.thenounproject.com/png/629576-200.png' : `http://localhost:8000${profile.image}`} />
         </div>
         <h2>Booked Classes</h2>
-        <div className="booked-classesi">
+        <div className="booked-classes">
           {profile.fitness.map(bookedclass => {
             return <div className='card' id={bookedclass.id} key={bookedclass.id}>
               <div className="card-content">

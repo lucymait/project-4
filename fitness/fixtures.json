@@ -157,7 +157,7 @@
     "gym": 1,
     "activity_type": "Yoga",
     "instructor": 1,
-    "description": "This 1 hour class at Yogarise is based on the Primary Series \u2013 a dynamic sequence of postures practiced with focused breathing techniques, designed specifically to align the body and strengthen the nervous system, while cultivating a feeling of inner peace and leading to a natural state of meditation.",
+    "description": "This 1 hour class at Yogarise is based on a dynamic sequence of postures practiced with focused breathing techniques, designed specifically to align the body and strengthen the nervous system, while cultivating a feeling of inner peace and leading to a natural state of meditation.",
     "time_of_class": "18:00",
     "comment": []
   }
@@ -283,8 +283,8 @@
   "model": "fitness.borough",
   "pk": 1,
   "fields": {
-    "name": "Hammersmith & Fulham",
-    "image": "https://static.standard.co.uk/s3fs-public/thumbnails/image/2019/06/25/11/Hammersmith-Bridge5478.jpg?w968",
+    "name": "Hammersmith",
+    "image": "https://media.timeout.com/images/105616695/image.jpg",
     "fitnessclass": [
       8,
       1,
@@ -304,7 +304,7 @@
   "pk": 2,
   "fields": {
     "name": "Lambeth",
-    "image": "https://www.wandsworthguardian.co.uk/resources/images/8821679.jpg?display=1&htype=0&type=responsive-gallery",
+    "image": "https://live.staticflickr.com/7287/8715334040_1e95581fab_b.jpg",
     "fitnessclass": [
       3,
       1,
@@ -346,7 +346,6 @@
     "name": "Southwark",
     "image": "https://www.smartcitiesworld.net/AcuCustom/Sitename/DAM/019/London_Southwark_AdobeStock_248248284.jpg",
     "fitnessclass": [
-      1,
       2,
       3,
       4,
@@ -355,7 +354,8 @@
       7,
       8,
       9,
-      10
+      10,
+      1
     ]
   }
 },
@@ -366,7 +366,6 @@
     "name": "Hackney",
     "image": "https://img.theculturetrip.com/768x432/wp-content/uploads/2018/11/kdcyxc.jpg",
     "fitnessclass": [
-      1,
       2,
       3,
       4,
@@ -375,7 +374,8 @@
       7,
       8,
       9,
-      10
+      10,
+      1
     ]
   }
 },
@@ -386,7 +386,6 @@
     "name": "Greenwich",
     "image": "https://cdn.thecrazytourist.com/wp-content/uploads/2018/07/ccimage-shutterstock_721255741.jpg",
     "fitnessclass": [
-      1,
       2,
       3,
       4,
@@ -395,7 +394,8 @@
       7,
       8,
       9,
-      10
+      10,
+      1
     ]
   }
 },
@@ -406,7 +406,6 @@
     "name": "The City",
     "image": "https://evanevanstours.com/blog/wp-content/uploads/2019/07/city-of-london.jpg",
     "fitnessclass": [
-      1,
       2,
       3,
       4,
@@ -415,7 +414,8 @@
       7,
       8,
       9,
-      10
+      10,
+      1
     ]
   }
 },
@@ -426,7 +426,6 @@
     "name": "Islington",
     "image": "https://media.onthemarket.com/location-guides/islington-north-london/regents-canal-islington.jpg",
     "fitnessclass": [
-      1,
       2,
       3,
       4,
@@ -435,7 +434,8 @@
       7,
       8,
       9,
-      10
+      10,
+      1
     ]
   }
 },
@@ -446,7 +446,6 @@
     "name": "Camden",
     "image": "https://secretldn.com/wp-content/uploads/2018/11/Camden-Market-4-e1542038186914.jpg",
     "fitnessclass": [
-      1,
       2,
       3,
       4,
@@ -455,7 +454,8 @@
       7,
       8,
       9,
-      10
+      10,
+      1
     ]
   }
 },
@@ -466,7 +466,6 @@
     "name": "Wandsworth",
     "image": "https://www.asmag.com/upload/pic/case/51813.646375.jpg",
     "fitnessclass": [
-      1,
       2,
       3,
       4,
@@ -475,7 +474,8 @@
       7,
       8,
       9,
-      10
+      10,
+      1
     ]
   }
 },
@@ -486,7 +486,6 @@
     "name": "Richmond",
     "image": "https://media.timeout.com/images/105180194/630/472/image.jpg",
     "fitnessclass": [
-      1,
       2,
       3,
       4,
@@ -495,7 +494,8 @@
       7,
       8,
       9,
-      10
+      10,
+      1
     ]
   }
 },
@@ -506,7 +506,6 @@
     "name": "Tower Hamlets",
     "image": "https://media.timeout.com/images/105466098/630/472/image.jpg",
     "fitnessclass": [
-      1,
       2,
       3,
       4,
@@ -515,36 +514,121 @@
       7,
       8,
       9,
-      10
+      10,
+      1
     ]
   }
 },
 {
   "model": "fitness.bookedclass",
-  "pk": 1,
+  "pk": 23,
   "fields": {
-    "name": "Boxing",
-    "gym": "blah",
-    "activity_type": "blah",
-    "instructor": "blah",
-    "description": "blah",
-    "time_of_class": "blah",
-    "data_booked": "blah",
-    "user": 2
+    "name": "Yogarise",
+    "gym": "The Gym",
+    "activity_type": "Yoga",
+    "instructor": "Lucy",
+    "description": "This 1 hour class at Yogarise is based on the Primary Series \u2013 a dynamic sequence of postures practiced with focused breathing techniques, designed specifically to align the body and strengthen the nervous system, while cultivating a feeling of inner peace and leading to a natural state of meditation.",
+    "time_of_class": "18:00",
+    "data_booked": "Apr 22nd",
+    "user": 18
   }
 },
 {
   "model": "fitness.bookedclass",
-  "pk": 2,
+  "pk": 24,
   "fields": {
-    "name": "Boxing",
-    "gym": "blah",
-    "activity_type": "blah",
-    "instructor": "blah",
-    "description": "blah",
-    "time_of_class": "blah",
-    "data_booked": "blah",
-    "user": 2
+    "name": "Yogarise",
+    "gym": "The Gym",
+    "activity_type": "Yoga",
+    "instructor": "Lucy",
+    "description": "This 1 hour class at Yogarise is based on the Primary Series \u2013 a dynamic sequence of postures practiced with focused breathing techniques, designed specifically to align the body and strengthen the nervous system, while cultivating a feeling of inner peace and leading to a natural state of meditation.",
+    "time_of_class": "18:00",
+    "data_booked": "Apr 22nd",
+    "user": 18
+  }
+},
+{
+  "model": "fitness.bookedclass",
+  "pk": 25,
+  "fields": {
+    "name": "Pure Barre",
+    "gym": "Anytime Fitness",
+    "activity_type": "Barre",
+    "instructor": "Casey",
+    "description": "Pure Barre is an intelligent fusion of Pilates, classical ballet exercises and yoga stretches. No equipment is used during these sessions.",
+    "time_of_class": "19:30",
+    "data_booked": "Apr 22nd",
+    "user": 18
+  }
+},
+{
+  "model": "fitness.bookedclass",
+  "pk": 26,
+  "fields": {
+    "name": "Pure Barre",
+    "gym": "Anytime Fitness",
+    "activity_type": "Barre",
+    "instructor": "Casey",
+    "description": "Pure Barre is an intelligent fusion of Pilates, classical ballet exercises and yoga stretches. No equipment is used during these sessions.",
+    "time_of_class": "19:30",
+    "data_booked": "Apr 22nd",
+    "user": 18
+  }
+},
+{
+  "model": "fitness.bookedclass",
+  "pk": 27,
+  "fields": {
+    "name": "Pure Barre",
+    "gym": "Anytime Fitness",
+    "activity_type": "Barre",
+    "instructor": "Casey",
+    "description": "Pure Barre is an intelligent fusion of Pilates, classical ballet exercises and yoga stretches. No equipment is used during these sessions.",
+    "time_of_class": "19:30",
+    "data_booked": "Apr 22nd",
+    "user": 18
+  }
+},
+{
+  "model": "fitness.bookedclass",
+  "pk": 28,
+  "fields": {
+    "name": "Yogarise",
+    "gym": "The Gym",
+    "activity_type": "Yoga",
+    "instructor": "Lucy",
+    "description": "This 1 hour class at Yogarise is based on the Primary Series \u2013 a dynamic sequence of postures practiced with focused breathing techniques, designed specifically to align the body and strengthen the nervous system, while cultivating a feeling of inner peace and leading to a natural state of meditation.",
+    "time_of_class": "18:00",
+    "data_booked": "Apr 22nd",
+    "user": 18
+  }
+},
+{
+  "model": "fitness.bookedclass",
+  "pk": 29,
+  "fields": {
+    "name": "Pure Barre",
+    "gym": "Anytime Fitness",
+    "activity_type": "Barre",
+    "instructor": "Casey",
+    "description": "Pure Barre is an intelligent fusion of Pilates, classical ballet exercises and yoga stretches. No equipment is used during these sessions.",
+    "time_of_class": "19:30",
+    "data_booked": "Apr 22nd",
+    "user": 18
+  }
+},
+{
+  "model": "fitness.bookedclass",
+  "pk": 30,
+  "fields": {
+    "name": "Pure Barre",
+    "gym": "Anytime Fitness",
+    "activity_type": "Barre",
+    "instructor": "Casey",
+    "description": "Pure Barre is an intelligent fusion of Pilates, classical ballet exercises and yoga stretches. No equipment is used during these sessions.",
+    "time_of_class": "19:30",
+    "data_booked": "Apr 22nd",
+    "user": 18
   }
 }
 ]

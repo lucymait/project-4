@@ -5,7 +5,7 @@ import moment from 'moment'
 import auth from '../../lib/auth'
 import { Link } from 'react-router-dom'
 
-import bookingconfirmation from './BookingConfirmation'
+import BookingConfirmation from './BookingConfirmation'
 
 
 const SingleFitnessClass = (props) => {
@@ -33,6 +33,7 @@ const SingleFitnessClass = (props) => {
     }
     axios.post('/api/fitness/bookedclass/', data, { headers: { Authorization: `Bearer ${auth.getToken()}` } })
       .then(() => {
+        // <BookingConfirmation props={props}/>
         props.history.push('/bookingconfirmation')
       })
   }
@@ -63,7 +64,7 @@ const SingleFitnessClass = (props) => {
         </div>
         <div className="singlefitness-container">
           <h2>Instructor :</h2>
-          <h5> {instructor}</h5>
+          <h5 className="instructor"> {instructor}</h5>
         </div>
         <p className='card'>{fitnessclass.description}</p>
         <button onClick={(e) => handleBooking(e)} className='button'>Book Now</button>

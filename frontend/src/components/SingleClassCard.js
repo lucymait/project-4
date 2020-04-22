@@ -23,7 +23,7 @@ const SingleFitnessCard = ( { props, id, name, time_of_class, gym, instructor, d
         props.history.push('/bookingconfirmation')
       })
   }
-  console.log(props)
+  // console.log(props)
   return <>
     <div className="card class-card" key={id}>
       <div className="card-content">

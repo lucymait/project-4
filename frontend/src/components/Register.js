@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
+
 
 const Register = (props) => {
   const [registerData, setRegisterData] = useState({})
-  const [errors, setErrors] = useState({ username: '', email: '', password: '', password_confirmation: '', image: '' })
+  const [errors, setErrors] = useState({ username: '', email: '', password: null, password_confirmation: null, image: '' })
   // const { register } = useForm()
+
 
   function handleChange(event) {
     const { name, value } = event.target
@@ -20,7 +23,7 @@ const Register = (props) => {
     const body = new FormData()
     body.append('email', registerData.email)
     body.append('username', registerData.username)
-    body.append('password', registerData.password)
+    body.append('password', registerData.password ? registerData.password : '')
     body.append('password_confirmation', registerData.password_confirmation)
     body.append('image', image[0], image[0].name)
     axios.post('/api/register',
@@ -113,7 +116,11 @@ const Register = (props) => {
       <button className='button'>
         Register
       </button>
+      {errors.email ? <p className="registered">
+        Already have an account?<Link className="registered" to='/login'>Login</Link>
+      </p> : null}
     </form>
+
   </section>
 
 

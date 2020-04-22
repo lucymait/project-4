@@ -10,6 +10,11 @@ const Home = () => (
           <h1>FITBOOK</h1>
           <img src='https://i.imgur.com/50EzKYk.png'/>
         </div>
+        <div>
+          <p className="description">Search, Find & Book classes</p>
+          {/* <p className="description">fitness classes in your area</p> */}
+          <p className="description">within 24hrs</p>
+        </div>
         <div className="subtitle">
           <Link to='/register'><button className="button is-large">Register</button></Link>
           <Link to='/login'><button className="button is-large">Login</button></Link>
