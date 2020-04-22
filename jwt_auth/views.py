@@ -19,10 +19,6 @@ class RegisterView(CreateAPIView):
             serializer.save()
             return Response({'message': 'Registration successful'})
         return Response(serializer.errors, status=422)
-    
-    # def clean_username(self, email):
-    #     if User.objects.get(email=email).exists():
-    #         raise ValidationError("Email is not unique")
 
 
 class LoginView(APIView):

@@ -17,6 +17,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     password = serializers.CharField(write_only=True)
     password_confirmation = serializers.CharField(write_only=True)
+    email = serializers.CharField()
 
     def validate(self, data):
 
@@ -33,6 +34,17 @@ class UserSerializer(serializers.ModelSerializer):
 
         data['password'] = make_password(password)
         return data
+
+    def clean_email(self):
+
+      data = self.cleaned_data['email']
+      duplicate_users  = User.objects.filter(email=data)
+
+      if duplicate_users.exists():
+            raise serializers.ValidationError('email is already registered')
+      return data 
+
+
 
     class Meta:
         model = User
