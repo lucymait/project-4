@@ -31,7 +31,7 @@ const BookingConfirmation = () => {
         </div>
         <div className="subtitle">
           <p className="booking-p">Thank you {fitnessClass.username} for booking with FITBOOK </p><br />
-          <Link to={`/profile/${id}`}><button className="button booking">View Booked Classes</button></Link>
+          <Link to={'/profile'}><button className="button booking">View Booked Classes</button></Link>
         </div>
       </div>
     </section>
