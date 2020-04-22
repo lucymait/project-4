@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 
 import NavBar from './NavBar'
@@ -40,8 +41,8 @@ const Profile = () => {
           {profile.fitness.length === 0 ?
 
             <div className='noClassesBooked'>
-              <p> No classes booked for today! </p>
-              <button className="button">Browse Classes</button>
+              <p> No classes booked for today </p>
+              <Link to='/borough'><button className="button">Browse Classes</button></Link>
             </div>
 
             :

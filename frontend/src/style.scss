@@ -12,23 +12,28 @@ body {
 }
 
 
-.borough-image {
-  opacity: 0.9;
+// HOMEPAGE 
+#background-image {
+  position: absolute;
+  object-fit: fill;
+  min-height: 100vh;
+  height: 100vh;
+  width: 100vw;
+  filter: blur(2px) brightness(82%);
 }
 
 .hero-body {
   padding: 0px !important;
   .container {
-    height: 560px;
+    // background-color: yellowgreen;
+    height: 600px;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     padding: 0px;
-    // background-color: royalblue;
     .title {
-      // background-color: salmon;
-      border: 4px solid rebeccapurple;
+      border: 2px solid rebeccapurple;
       width: 280px;
       height: 300px;
       border-radius: 80%;
@@ -36,6 +41,8 @@ body {
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      z-index: 10;
+      background-color: rgba(245, 245, 245, 0.671);
       h1 {
         color: rebeccapurple;
         font-size: 30px;
@@ -48,28 +55,33 @@ body {
         width: 120px;
       }
     }
+    .description {
+      color: black;
+      background-color: rgba(245, 245, 245, 0.527);
+      width: 100%;
+      font-size: 20px;
+      padding: 5px 0;
       .subtitle {
         // background-color: rosybrown;
-        width: 280px;
-        // height: 150px;
         display: flex;
-        flex-direction: row;
-        padding-top: 40px;
+        justify-content: space-evenly;
+        padding-top: 10px;
           button {
             font-family: 'Cantarell', sans-serif;
-            color: rebeccapurple;
-            font-weight: bold;
+            color: black;
             background-color: transparent;
-            border: none;
+            border: 1px solid black;
             outline: none;
-            &:hover {
-              color: whitesmoke;
-              background-color: rebeccapurple;
-            }
+            width: 100px;
+            color: black;
           }
       }
+    }
   }
 }
+
+
+// REGISTER PAGE 
 
 .register-section {
   height: 100vh;
@@ -125,8 +137,14 @@ body {
           width: 180px;
         }
         }
+        .login-link {
+          color: rebeccapurple;
+        }
       }
     }
+
+
+// LOGIN PAGE 
 
 
 .login-section {
@@ -170,6 +188,8 @@ body {
     }
 
 }
+
+// FITNESS CLASSES.JS 
 
 .classes-section {
   background-color: whitesmoke;
@@ -249,6 +269,9 @@ body {
   }
 }
 
+
+// SINGLE FITNESS CLASS.JS
+
 .fitnessclass-section {
   font-family: 'Cantarell', sans-serif;
   height: 90%;
@@ -273,6 +296,10 @@ body {
       height: 10%;
       justify-content: space-between;
       margin: 0;
+      .header {
+        display: flex;
+        justify-content: space-between;
+      }
       .title {
         height: 118%;
         font-size: 23px;
@@ -318,6 +345,11 @@ body {
   }
 }
 
+
+
+// PROFILE
+
+
 .profile-section {
   height: 100%;
   .container {
@@ -355,20 +387,19 @@ body {
         align-items: center;
         height: 65%;
         .noClassesBooked {
-          border: 1px solid rgb(167, 164, 164);
-          box-shadow: 1px 1px darkgray;
-          background-color: rgb(231, 231, 231);
+          // border: 1px solid rgb(167, 164, 164);
+          // box-shadow: 1px 1px darkgray;
+          // background-color: rgb(231, 231, 231);
           border-radius: 10px;
           display: flex;
           flex-direction: column;
           justify-content: space-evenly;
           align-items: center;
           text-align: center;
-          height: 180px;
+          height: 100px;
           width: 300px;
           p {
             font-size: 18px;
-            font-weight: 700;
           }
         }
         .card {
@@ -392,20 +423,27 @@ body {
   }
 }
 
+// BOROUGH.JS 
 
-.card-content.borough {
-background-color:  #fcfcfc;
-border-radius: 25px;
-padding: 10px;
-opacity: 0.9;
+// SEARCH FORM
+.SearchForm {
+  padding-bottom: 20px;
+      input[type=text] {
+      width: 130px;
+      transition: width 0.4s ease-in-out;
+      border: 1px solid rebeccapurple;
+      font-size: 15px;
+      &:focus {
+        width: 100%
+      }
+    }
 }
 
-
-.title.borough {
+.borough-title {
   font-family: 'Cantarell', sans-serif;
-  font-weight: bold !important;
-  // display: flex;
-  // justify-content: center;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
   font-size: 25px;
   font-weight: 700;
   border-bottom: 2px solid rebeccapurple;
@@ -413,14 +451,102 @@ opacity: 0.9;
 }
 
 
+//  BOROUGH CARD 
+.column {
+  padding: 18px;
+  .borough-card {
+    border-radius: 20px;
+    background-color:  #fcfcfc;
+    &:hover {
+      transform : translateY(-15px);
+    }
+    .borough-image {
+      border-radius: 0px 0px 20px 20px;
+      opacity: 0.9;
+    }
+    .borough-cardContent {
+      background-color:  #fcfcfc;
+      border-radius: 25px;
+      padding: 10px;
+      opacity: 0.9;
+      }
+    .borough-subtitle {
+      display: flex;
+      justify-content: center;
+      // color:rebeccapurple;
+      font-size: 12px;
+      font-weight: bold;
+    }
+  }
+}
 
-.subtitle.borough {
+
+// BOOKING CONFIRMATION 
+.confirmation-section {
+  height: 100%;
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100%;
+    width: 95%;
+    .title {
+      display: flex;
+      flex-direction: column;
+      height: 170px;
+      justify-content: space-between;
+      align-items: center;
+      img {
+        height: 125px;
+        width: 120px;
+        }
+        h3 {
+          font-size: 25px;
+        }
+    }
+    .subtitle {
+      // background-color: seagreen;
+      height: 350px;
+      width: 90%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      h2 {
+        font-size: 28px;
+      }
+      p {
+        font-size: 16px;
+      }
+      h3 {
+       color: rebeccapurple;
+      }
+      button {
+        background-color: rebeccapurple;
+        color: whitesmoke;
+        font-weight: 600;
+        height: 45px;
+      }
+    }
+  }
+}
+
+
+
+// NAVBAR 
+
+.navbar {
   display: flex;
   justify-content: center;
-  // color:rebeccapurple;
-  font-size: 12px;
-  font-weight: bold;
+  width: 100%;
+  background-color: rgba($color:whitesmoke, $alpha: 1);
+  a{
+    color: rebeccapurple;
+    font-size: 20px;
+  }
 }
+
 
 
 @media only screen and (min-width: 683px) {
@@ -432,131 +558,11 @@ opacity: 0.9;
 
 }
 
-.card.borough {
-  border-radius: 20px !important;
-  background-color:  #fcfcfc;
-}
-
-.card.borough:hover {
-  transform : translateY(-15px);
-}
 
 
-.borough-image {
-  border-radius: 0px 0px 20px 20px !important;
-}
 
-.SearchForm {
-  padding-bottom: 20px;
-}
 
-.input.is-medium[type=text] {
-  width: 130px;
-  // -webkit-transition: width 0.4s ease-in-out;
-  transition: width 0.4s ease-in-out;
-  border: 1px solid rebeccapurple;
-  font-size: 15px;
-}
 
-.input.is-medium[type=text]:focus {
-  width: 100%;
-}
 
-.navbar {
-  width: 100%;
-  background-color: rgba($color:whitesmoke, $alpha: 1);
-}
 
-.navbar-menu {
-  background-color: transparent;
-}
 
-a.navbar-item {
-  font-weight: bold;
-  display: block;
-  flex-grow: 0;
-  flex-shrink: 0;
-  position: relative;
-  line-height: 1.5;
-}
-
-#nav-styling {
-  display: flex;
-  justify-content: center;
-}
-
-a{
-  color: rebeccapurple !important;
-  font-size: 20px;
-  font-family: 'Cantarell', sans-serif;
-}
-
-.booking-image {
-  height: 125px;
-  width: 120px;
-}
-
-.column {
-  padding: 18px;
-}
-
-.date {
-  padding-bottom: 10px;
-}
-
-.exit {
-  margin: 0px;
-  display: flex;
-  justify-content: flex-end;
-  padding-right: 10px;
-}
-
-.confirmation {
-  padding-top: 20px;
-  padding-bottom: 10px;
-}
-
-.booking-p {
-  padding-bottom: 30px;
-}
-
-.button.booking {
-  background-color: rebeccapurple;
-  color: whitesmoke;
-  font-weight: 600;
-  height: 45px;
-}
-
-.profile-name {
-  padding-bottom: 10px;
-}
-
-.date-subtitle {
-  font-size: 15px;
-  font-family: 'Cantarell', sans-serif;
-  padding-bottom: 20px;
-  padding-top: 5px;
-}
-
-.container.has-text-centered {
-  margin: 5px;
-}
-
-.instructor {
-  padding-bottom: 20px;
-}
-
-p.description {
-  font-family: 'Cantarell', sans-serif;
-  font-size: 18px;
-  color: rebeccapurple;
-}
-
-p.registered {
-  font-size: 14px;
-  padding-top: 15px;
-}
-
-strong {
-  color: rebeccapurple;
-}
