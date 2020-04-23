@@ -25,11 +25,10 @@ body {
 .hero-body {
   padding: 0px !important;
   .container {
-    // background-color: yellowgreen;
     height: 600px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     padding: 0px;
     .title {
@@ -204,7 +203,7 @@ body {
 
 // FITNESS CLASSES.JS 
 #buffer {
-  height: 80px;
+  height: 60px;
 }
 
 .classes-section {
@@ -242,9 +241,9 @@ body {
 
   }
   .title {
-    // background-color: royalblue;
     display: flex;
     width: 95%;
+    padding-top: 20px;
     align-self: center;
     justify-content: space-between;
   .subtitle {
@@ -487,6 +486,9 @@ body {
       border-radius: 0px 0px 20px 20px;
       opacity: 0.9;
     }
+    #Lambeth {
+      transform: translateY(15px);
+    }
     .borough-cardContent {
       background-color:  #fcfcfc;
       border-radius: 25px;
@@ -577,6 +579,9 @@ body {
     input {
       width: 50vw;
     }
+  }
+  #Lambeth {
+    transform: translateY(0px) !important;
   }
 
 }

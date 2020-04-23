@@ -13,7 +13,7 @@ const Home = () => (
         </div>
         <div className="description">
           <p>Search, Find &  Book
-            classes <br /> on the day, for the day</p>
+            classes <br /> for the next day</p>
           <div className="subtitle">
             <Link to='/register'><button className="button">Register</button></Link>
             <Link to='/login'><button className="button">Login</button></Link>
