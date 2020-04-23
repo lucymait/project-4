@@ -52,7 +52,7 @@ class Borough extends React.Component {
         {/* <div className="container is-mobile"> */}
         <div className="columns is-mobile is-multiline">
           {this.state.filteredBoroughs.map((borough) => {
-            return <BoroughCard className='column is-one-quarter-desktop is-one-third-tablet is-half-mobile' props={this.props} key={borough.id} {...borough} />
+            return <BoroughCard className='column is-one-quarter-desktop is-one-third-tablet is-half-mobile' props={this.props} id={borough.id} key={borough.id} {...borough} />
           }
           )}
         </div>

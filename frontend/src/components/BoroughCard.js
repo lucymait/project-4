@@ -11,7 +11,7 @@ const BoroughCard = ( { props, id,  name, image }) => {
         </div>
         <div className="card-image">
           <figure className="image is-5by4">
-            <img src={image} className="borough-image"></img>
+            <img src={image} id={name} className="borough-image"></img>
           </figure>
         </div>
       </div>
