@@ -36,6 +36,7 @@ const SingleFitnessClass = (props) => {
       })
   }
 
+
   const gymname = fitnessclass.gym ? fitnessclass.gym.name : null
   const gymfacilities = fitnessclass.gym ? fitnessclass.gym.facilities : null
   const instructor = fitnessclass.instructor ? fitnessclass.instructor.name : null

@@ -6,7 +6,7 @@ import moment from 'moment'
 
 import auth from '../../lib/auth'
 
-const SingleFitnessCard = ( { props, id, name, time_of_class, gym, instructor, description, activity_type }) => {
+const SingleClassCard = ( { props, id, name, time_of_class, gym, instructor, description, activity_type }) => {
 
   function handleBooking() {
     const data = {
@@ -23,6 +23,13 @@ const SingleFitnessCard = ( { props, id, name, time_of_class, gym, instructor, d
         props.history.push('/bookingconfirmation')
       })
   }
+
+//   function compare(a,b) {
+//     const a = {time_of_class}
+//     const b = {time_of_class}
+//  }
+
+
   // console.log(props)
   return <>
     <div className="card class-card" key={id}>
@@ -42,4 +49,4 @@ const SingleFitnessCard = ( { props, id, name, time_of_class, gym, instructor, d
   </>
 }
 
-export default SingleFitnessCard
+export default SingleClassCard
