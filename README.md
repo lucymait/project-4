@@ -42,7 +42,13 @@ Check out the top fitness classes in your area, [here]().
 
 ## Approach 
 
+Django created a main project folder which contains all the project URLS and settings, including the database configuration. It also comes with a built-in CMS where the user can directly add, update and delete database records, and pre made authentication. The user needs to create a superuser in order to view the admin user section. 
+
+Next we created our app (fitness) which is part of the project and has its own set of URLS, models, views and serializers. We can link our app into the Django project by modifying some settings in the project folder.
+
 ## Models
+
+It was crucial creating our models at stage 1, to ensure 
 
 ### 1. JWT_AUTH
 
@@ -54,18 +60,147 @@ class User(AbstractUser):
 
 ### 2. FITNESS
 
+```js
+class FitnessClass(models.Model):
+  name = models.CharField(max_length=200)
+  gym = models.ForeignKey(Gym, related_name='fitness', on_delete=models.CASCADE)
+  activity_type = models.CharField(max_length=500)
+  instructor = models.ForeignKey(Instructor, related_name='fitness', on_delete=models.CASCADE)
+  description = models.CharField(max_length=1000)
+  time_of_class = models.CharField(max_length=200)
+  comment = models.ManyToManyField(Comment, related_name='fitness', blank=True)
+
+  def __str__(self):
+    return f'{self.name}'
+```
+```js
+class BookedClass(models.Model):
+  name = models.CharField(max_length=200)
+  gym = models.CharField(max_length=200)
+  activity_type = models.CharField(max_length=500)
+  instructor = models.CharField(max_length=200)
+  description = models.CharField(max_length=1000)
+  time_of_class = models.CharField(max_length=200)
+  data_booked = models.CharField(max_length=100)
+  user = models.ForeignKey(User, related_name='fitness', on_delete=models.CASCADE)
+
+  def __str__(self):
+    return f'{self.name}'
+```
 ## Views
 
 ### 1. JWT_AUTH
-
+```js
+class RegisterView(CreateAPIView):
+    serializer_class = UserSerializer
+    def post(self, request):
+        serializer = UserSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({'message': 'Registration successful'})
+        return Response(serializer.errors, status=422)
+ ```
+```js
+class LoginView(APIView):
+    def get_user(self, email):
+        try:
+            return User.objects.get(email=email)
+        except User.DoesNotExist:
+            raise PermissionDenied({'message': 'Not Registered'})
+    def post(self, request):
+        email = request.data.get('email')
+        password = request.data.get('password')
+        user = self.get_user(email)
+        if not user.check_password(password):
+            raise PermissionDenied({'message': 'Incorrect Password'})
+        token = jwt.encode({'sub': user.id}, settings.SECRET_KEY, algorithm='HS256')
+        return Response({'token': token, 'message': f'Welcome back {user.username}!'})
+```
 ### 2. FITNESS
+```js
+class IsOwnerOrReadOnly(BasePermission):
+  def has_object_permission(self, request, view, obj):
+    if request.method in permissions.SAFE_METHODS:
+      return True
+    
+    return request.user == obj.user
+```
+```js
+class AllFitnessClassView(APIView):
+  permission_classes = (IsOwnerOrReadOnly,)
+
+  def get(self, request):
+    fitness_classes = FitnessClass.objects.all()
+    self.check_object_permissions(request, fitness_classes)
+    serializer = PopulateFitnessClassSerializer(fitness_classes, many=True)
+    return Response(serializer.data)
+```
+```js
+class FitnessClassDetailView(APIView):
+  permission_classes = (IsOwnerOrReadOnly,)
+
+  def get(self, request, pk):
+    fitness_class = FitnessClass.objects.get(pk=pk)
+    self.check_object_permissions(request, fitness_class)
+    serializer = PopulateFitnessClassSerializer(fitness_class)
+    return Response(serializer.data)
+```
 
 ## Serializers
 
 ### 1. JWT_AUTH
 
+```js
+class UserSerializer(serializers.ModelSerializer):
+
+    password = serializers.CharField(write_only=True)
+    password_confirmation = serializers.CharField(write_only=True)
+
+    def validate(self, data):
+
+        password = data.pop('password')
+        password_confirmation = data.pop('password_confirmation')
+
+        if not password:
+            raise serializers.ValidationError({'password': 'Not a valid Password'})
+
+        if password != password_confirmation:
+            raise serializers.ValidationError({'password_confirmation': 'Passwords do not match'})
+
+        try:
+            validations.validate_password(password=password)
+        except ValidationError as err:
+            raise serializers.ValidationError({'password': err.messages})
+
+        data['password'] = make_password(password)
+        return data 
+
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'email', 'image', 'password', 'password_confirmation','fitness')
+        extra_kwargs = {
+          'fitness' : {'required': False}
+        }
+```
+
 ### 2. FITNESS
 
+```js
+class FitnessClassSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = FitnessClass
+    fields = ('id', 'name', 'gym', 'activity_type', 'instructor', 'time_of_class', 'description', 'comment')
+```
+```js
+class PopulateFitnessClassSerializer(serializers.ModelSerializer):
+  instructor = InstructorSerializer()
+  gym = GymSerializer()
+  comment = CommentSerializer(many=True)
+
+  class Meta:
+    model = FitnessClass
+    fields = ('id', 'name', 'gym', 'activity_type', 'instructor', 'time_of_class', 'description', 'comment')
+```
 ## Authentication
 
 # Frontend
