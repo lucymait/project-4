@@ -17,7 +17,8 @@ Check out the top fitness classes in your area, [here]().
 
 ## Brief
 
-- Build a full-stack app
+- Choose to work solo or in a team
+- Build a full-stack app, by making your own backend and your own front-end
 - Use a Python Django API, using Django REST Framework to serve your data from a Postgres database
 - Consume your API with a separate front-end, built with React
 - Contain multiple relationships and CRUD functionality
@@ -31,8 +32,10 @@ Check out the top fitness classes in your area, [here]().
 - Django
 - PostgreSQL
 - HTML
-- CSS, Bulma & SCSS
+- CSS, SCSS
+- Bulma
 - Axios
+- Webpack
 - Git and GitHub
 - Heroku
 - Moment
@@ -42,24 +45,40 @@ Check out the top fitness classes in your area, [here]().
 
 ## Approach 
 
-Django created a main project folder which contains all the project URLS and settings, including the database configuration. It also comes with a built-in CMS where the user can directly add, update and delete database records, and pre made authentication. The user needs to create a superuser in order to view the admin user section. 
+When building our project; Django created a main project folder which contains all the project URLS and settings, including the database configuration. It also comes with a built-in CMS where the user can directly add, update and delete database records, and pre made authentication. The user needs to create a superuser in order to view the admin user section. 
 
 Next we created our app (fitness) which is part of the project and has its own set of URLS, models, views and serializers. We can link our app into the Django project by modifying some settings in the project folder.
+
+### Planning
+
+
 
 ## Models
 
 It was crucial creating our models at stage 1, to ensure 
 
-### 1. JWT_AUTH
+### 1. FITNESS
 
+For the PostgreSQL database, we created five tables: Instructor, Gym, Fitness Class, Borough & Booked Class.
+
+- The Instructor table consisted of a name so we could identify the instructor for each fitness class.
 ```js
-class User(AbstractUser):
-  image = models.ImageField(upload_to='profile_image', blank=True)
-  email = models.EmailField(unique=True, error_messages={'unique':"This email has already been registered."})
-  ```
+class Instructor(models.Model):
+  name = models.CharField(max_length=100)
 
-### 2. FITNESS
+  def __str__(self):
+    return f'{self.name}'
+```
+- The Gym table also consisted of a name, but in addition, had a facilities field e.g parking, showers or lockers
+```js
+class Gym(models.Model):
+  name = models.CharField(max_length=500)
+  facilities = models.CharField(max_length=400)
 
+  def __str__(self):
+    return f'{self.name}'
+```
+- 
 ```js
 class FitnessClass(models.Model):
   name = models.CharField(max_length=200)
@@ -69,6 +88,15 @@ class FitnessClass(models.Model):
   description = models.CharField(max_length=1000)
   time_of_class = models.CharField(max_length=200)
   comment = models.ManyToManyField(Comment, related_name='fitness', blank=True)
+
+  def __str__(self):
+    return f'{self.name}'
+```
+```js
+class Borough(models.Model):
+  name = models.CharField(max_length=200)
+  image = models.CharField(max_length=1000)
+  fitnessclass = models.ManyToManyField(FitnessClass, related_name='fitness', blank=True)
 
   def __str__(self):
     return f'{self.name}'
@@ -87,9 +115,20 @@ class BookedClass(models.Model):
   def __str__(self):
     return f'{self.name}'
 ```
-## Views
 
 ### 1. JWT_AUTH
+
+Django provided us with a basic User, however we extended this by adding an image and email field. The image field was 'blank=true" and therefore it was not necessary for the user to provide one upon registration.
+
+```js
+class User(AbstractUser):
+  image = models.ImageField(upload_to='profile_image', blank=True)
+  email = models.EmailField(unique=True, error_messages={'unique':"This email has already been registered."})
+  ```
+
+## Views (API End-points)
+
+### 1. JWT_AUTH (User)
 ```js
 class RegisterView(CreateAPIView):
     serializer_class = UserSerializer
