@@ -41,23 +41,23 @@ class Borough extends React.Component {
       filteredBoroughs: filteredBoroughs
     })
   }
-  
+
 
   render() {
     return <>
-    <Navbar />
-    <section className="section classes-section">
-      <h1 className="title borough-title">Pick a Borough</h1>
-      <SearchForm query={this.state.query} onChange={() => this.filterBoroughs(event)} />
-      <div className="container is-mobile">
+      <Navbar />
+      <section className="section borough-section">
+        <h1 className="title borough-title">Select Borough</h1>
+        <SearchForm query={this.state.query} onChange={() => this.filterBoroughs(event)} />
+        {/* <div className="container is-mobile"> */}
         <div className="columns is-mobile is-multiline">
           {this.state.filteredBoroughs.map((borough) => {
-            return <BoroughCard props={this.props} key={borough.id} {...borough} />
+            return <BoroughCard className='column is-one-quarter-desktop is-one-third-tablet is-half-mobile' props={this.props} key={borough.id} {...borough} />
           }
           )}
         </div>
-      </div>
-    </section>
+        {/* </div> */}
+      </section>
     </>
   }
 }

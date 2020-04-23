@@ -186,15 +186,32 @@ body {
         color: whitesmoke;
       }
     }
+    .notRegistered {
+      font-size: 15px;
+      text-align: center;
+      height: 65px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: black;
+      padding: 10px;
+      a {
+        color: rebeccapurple;
+      }
+    }
 
 }
 
 // FITNESS CLASSES.JS 
+#buffer {
+  height: 80px;
+}
 
 .classes-section {
   background-color: whitesmoke;
   font-family: 'Cantarell', sans-serif;
   padding: 0px;
+  // display: flex;
   .header {
     display: flex;
     justify-content: space-between;
@@ -218,13 +235,11 @@ body {
       padding: 0;
     }
   }
-  #buffer {
-    height: 80px;
-  }
   .container {
     display: flex;
     flex-direction: column;
     width: 90%;
+
   }
   .title {
     // background-color: royalblue;
@@ -274,20 +289,27 @@ body {
 
 .fitnessclass-section {
   font-family: 'Cantarell', sans-serif;
-  height: 90%;
+  height: 100%;
+  overflow-x: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 20px 10px 48px;
+  button {
+    background-color: rebeccapurple;
+    border-radius: 20px;
+    border: 2px solid rebeccapurple;
+    color: whitesmoke;
+    font-weight: 700;
+    padding: 2px 6px;
+    width: 25px;
+  }
   .container {
-    height: 105%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-      button {
-        background-color: rebeccapurple;
-        border-radius: 20px;
-        border: 2px solid rebeccapurple;
-        color: whitesmoke;
-        font-weight: 700;
-        padding: 2px 6px;
-      }
+    justify-content: space-around;
+    overflow-x: scroll;
     .subtitle {
       border-bottom: 2px solid rebeccapurple;
       padding-bottom: 10px;
@@ -296,9 +318,8 @@ body {
       height: 10%;
       justify-content: space-between;
       margin: 0;
-      .header {
-        display: flex;
-        justify-content: space-between;
+      h4 {
+        font-size: 15px;
       }
       .title {
         height: 118%;
@@ -425,6 +446,18 @@ body {
 
 // BOROUGH.JS 
 
+.borough-section {
+  background-color: whitesmoke;
+  .borough-title {
+    font-weight: normal;
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+    border-bottom: 2px solid rebeccapurple;
+    padding-bottom: 10px;
+  }
+}
+
 // SEARCH FORM
 .SearchForm {
   padding-bottom: 20px;
@@ -439,16 +472,6 @@ body {
     }
 }
 
-.borough-title {
-  font-family: 'Cantarell', sans-serif;
-  font-weight: bold;
-  display: flex;
-  justify-content: center;
-  font-size: 25px;
-  font-weight: 700;
-  border-bottom: 2px solid rebeccapurple;
-  padding-bottom: 10px;
-}
 
 
 //  BOROUGH CARD 

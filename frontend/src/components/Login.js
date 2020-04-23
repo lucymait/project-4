@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import auth from '../../lib/auth'
+import { Link }  from 'react-router-dom'
 
 const Login = (props) => {
   const [LoginData, setLoginData] = useState({})
@@ -61,10 +62,18 @@ const Login = (props) => {
         {error.message ? <p>{error.message}
         </p> : null}
       </div>
-      <button className="button is-success">
+      <button className="button">
         Login
       </button>
     </form>
+    {error.message === 'Not Registered' ?
+      <div className="notRegistered">
+        <p>Looks like you're not registered with us.</p>
+        <Link to='/register'>Register Here</Link>
+      </div>
+      :
+
+      null}
   </section>
 
 

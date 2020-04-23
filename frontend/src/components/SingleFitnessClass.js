@@ -45,16 +45,14 @@ const SingleFitnessClass = (props) => {
   const instructor = fitnessclass.instructor ? fitnessclass.instructor.name : null
   return <>
     <section className="section fitnessclass-section">
+      <button onClick={() => previousPage()} >X</button>
       <div className="container">
         <div className="subtitle">
-          <div className="header">
-            <h4>{fitnessclass.activity_type}</h4>
-            <button onClick={() => previousPage()} >X</button>
-          </div>
           <div className="title">
             <h2>{fitnessclass.name}</h2>
             <h4 id='class-time'>{fitnessclass.time_of_class}</h4>
           </div>
+          <h4>{fitnessclass.activity_type}</h4>
         </div>
         <div className="singlefitness-container">
           <h2> Location :</h2>

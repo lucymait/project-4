@@ -33,6 +33,9 @@ const FitnessClasses = (props) => {
     }
   }
 
+
+
+
   function previousPage() {
     props.history.goBack()
   }
@@ -68,7 +71,7 @@ const FitnessClasses = (props) => {
             return <SingleFitnessCard className='card class-card' props={props} key={elem.id} {...elem} />
           })}
         </div>
-        <div className="empty-div"></div>
+        <div id="buffer"></div>
       </div>
       <div className="navbar-test"></div>
     </section>
