@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import 'bulma'
-import SingleFitnessCard from './SingleClassCard'
+import SingleClassCard from './SingleClassCard'
 import Navbar from './NavBar'
 import moment from 'moment'
 import axios from 'axios'
@@ -16,8 +16,14 @@ const FitnessClasses = (props) => {
     axios.get(`/api/fitness/borough/${id}`)
       .then(resp => {
         setBorough(resp.data)
-        setFilteredClass(resp.data.fitnessclass)
-        setAllClasses(resp.data.fitnessclass)
+        const unsortedData = resp.data.fitnessclass
+        const sortedData = unsortedData.sort((a,b) => {
+          return parseInt(a.time_of_class.split(':').join('')) - parseInt(b.time_of_class.split(':').join(''))
+        })
+        // console.log(unsortedData)
+        // console.log(sortedData)
+        setAllClasses(sortedData)
+        setFilteredClass(sortedData)
       })
   }, [])
 
@@ -68,7 +74,7 @@ const FitnessClasses = (props) => {
         </div>
         <div>
           {filteredClass.map(elem => {
-            return <SingleFitnessCard className='card class-card' props={props} key={elem.id} {...elem} />
+            return <SingleClassCard className='card class-card' props={props} key={elem.id} {...elem} />
           })}
         </div>
         <div id="buffer"></div>
