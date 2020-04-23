@@ -45,6 +45,7 @@ const Register = (props) => {
       })
   }
 
+  console.log(errors.email)
 
 
   return <section className="section register-section">
@@ -66,8 +67,6 @@ const Register = (props) => {
           <i className="fas fa-envelope"></i>
         </span>
         {errors.email ? <p>{errors.email[0]}
-        </p> : null}
-        {errors === '' ? <p> email already exisits
         </p> : null}
       </div>
       <div className="control has-icons-left has-icons-right">
@@ -126,9 +125,7 @@ const Register = (props) => {
       <button className='button'>
         Register
       </button>
-      {errors.username ? <p className="registered">
-        Already have an account?<Link className="registered" to='/login'>Login</Link>
-      </p> : null}
+      {errors.email  ? <p>Already have an account? <Link className='login-link' to='/login'>Login</Link></p> : null}
     </form>
 
   </section>
@@ -137,3 +134,5 @@ const Register = (props) => {
 }
 
 export default Register
+
+

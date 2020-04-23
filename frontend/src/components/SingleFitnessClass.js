@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import 'bulma'
 import axios from 'axios'
 import moment from 'moment'
+
 import auth from '../../lib/auth'
-import { Link } from 'react-router-dom'
 
-import BookingConfirmation from './BookingConfirmation'
-
+import NavBar from './NavBar'
 
 const SingleFitnessClass = (props) => {
   const [fitnessclass, setFitnessclass] = useState([])
@@ -36,23 +34,26 @@ const SingleFitnessClass = (props) => {
       })
   }
 
+  function previousPage() {
+    props.history.goBack()
+  }
+
+  console.log(props)
 
   const gymname = fitnessclass.gym ? fitnessclass.gym.name : null
   const gymfacilities = fitnessclass.gym ? fitnessclass.gym.facilities : null
   const instructor = fitnessclass.instructor ? fitnessclass.instructor.name : null
   return <>
     <section className="section fitnessclass-section">
+      <button onClick={() => previousPage()} >X</button>
       <div className="container">
-        <div className="exit">
-          <Link className="delete" to="/borough"></Link>
-        </div>
         <div className="subtitle">
           <div className="title">
             <h2>{fitnessclass.name}</h2>
+            <h4 id='class-time'>{fitnessclass.time_of_class}</h4>
           </div>
-          <h4 id='class-time'>{fitnessclass.time_of_class}</h4>
+          <h4>{fitnessclass.activity_type}</h4>
         </div>
-        <h4 id = 'activity-type'>Activity Type: {fitnessclass.activity_type}</h4>
         <div className="singlefitness-container">
           <h2> Location :</h2>
           <h5> {gymname}</h5>
@@ -68,6 +69,7 @@ const SingleFitnessClass = (props) => {
         <p className='card'>{fitnessclass.description}</p>
         <button onClick={(e) => handleBooking(e)} className='button'>Book Now</button>
       </div>
+      <NavBar />
     </section>
   </>
 }

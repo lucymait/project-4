@@ -12,7 +12,7 @@ const NavBar = (props) => {
   }
 
 
-  return <nav className="navbar is-fixed-bottom" id="nav-styling">
+  return <nav className="navbar is-fixed-bottom">
     <div className="navbar-item">
       <Link to="/borough">Explore</Link>
     </div>

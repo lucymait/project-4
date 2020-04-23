@@ -14,7 +14,7 @@ class Borough extends React.Component {
 
     }
   }
-  // console.log(filteredBorough)
+
 
   componentDidMount() {
     axios.get('/api/fitness/borough/')
@@ -23,6 +23,9 @@ class Borough extends React.Component {
           boroughs: response.data,
           filteredBoroughs: response.data
         })
+      })
+      .then(() => {
+        console.log(this.state.boroughs)
       })
       .catch(error => console.error(error))
   }
@@ -39,23 +42,22 @@ class Borough extends React.Component {
     })
   }
 
-  // console.log(searchQuery)
 
   render() {
     return <>
-    <Navbar />
-    <section className="section classes-section">
-      <h1 className="title borough">Pick a Borough</h1>
-      <SearchForm query={this.state.query} onChange={() => this.filterBoroughs(event)} />
-      <div className="container is-mobile">
+      <Navbar />
+      <section className="section borough-section">
+        <h1 className="title borough-title">Select Borough</h1>
+        <SearchForm query={this.state.query} onChange={() => this.filterBoroughs(event)} />
+        {/* <div className="container is-mobile"> */}
         <div className="columns is-mobile is-multiline">
           {this.state.filteredBoroughs.map((borough) => {
-            return <BoroughCard key={borough.id} {...borough} />
+            return <BoroughCard className='column is-one-quarter-desktop is-one-third-tablet is-half-mobile' props={this.props} key={borough.id} {...borough} />
           }
           )}
         </div>
-      </div>
-    </section>
+        {/* </div> */}
+      </section>
     </>
   }
 }
