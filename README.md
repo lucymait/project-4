@@ -250,7 +250,13 @@ class PopulateFitnessClassSerializer(serializers.ModelSerializer):
 ## Potential Future Features
 
 - Add Live Comments to each fitness class
+- Max Limit on class
+- Time constraints on weekly classes (data configuration)
+- Creating secure routes in app.js
 
 ## Lessons Learned
 
 - A big lesson learnt was the importance of how well you design your schema. This will have a great impact on developing the frontend, to ensure the best user experience.
+- Importance of configuring Django early e.g. configuring Images 
+- Creating a fixture files early on, important in the time-frame
+- User expierence (booking confirmation)
