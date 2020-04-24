@@ -24,9 +24,6 @@ class Borough extends React.Component {
           filteredBoroughs: response.data
         })
       })
-      .then(() => {
-        console.log(this.state.boroughs)
-      })
       .catch(error => console.error(error))
   }
 

@@ -21,7 +21,8 @@ Check out the top fitness classes in your area, [here]().
 - Build a full-stack app, by making your own backend and your own front-end
 - Use a Python Django API, using Django REST Framework to serve your data from a Postgres database
 - Consume your API with a separate front-end, built with React
-- Contain multiple relationships and CRUD functionality
+- Contain multiple relationships and CRUD function
+ality
 - Be deployed online and accessible to the public.
 
 ## Technologies Used

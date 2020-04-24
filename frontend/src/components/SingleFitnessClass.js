@@ -13,7 +13,6 @@ const SingleFitnessClass = (props) => {
     const id = props.match.params.id
     axios.get(`/api/fitness/${id}`)
       .then(resp => {
-        // console.log(resp)
         setFitnessclass(resp.data)
       })
   }, [])
@@ -38,7 +37,6 @@ const SingleFitnessClass = (props) => {
     props.history.goBack()
   }
 
-  console.log(props)
 
   const gymname = fitnessclass.gym ? fitnessclass.gym.name : null
   const gymfacilities = fitnessclass.gym ? fitnessclass.gym.facilities : null

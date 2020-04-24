@@ -10,7 +10,6 @@ const BookingConfirmation = () => {
   const [lastClass, setLastClass] = useState({})
 
   useEffect(() => {
-    console.log(auth.getToken())
     axios.get('api/profile', { headers: { Authorization: `Bearer ${auth.getToken()}` } })
       .then(resp => {
         setUser(resp.data)
@@ -22,8 +21,6 @@ const BookingConfirmation = () => {
   const lastBookedname = lastBooked ? lastBooked.name : null 
   const lastBooktime = lastBooked ? lastBooked.time_of_class : null
   const lastBookedgym = lastBooked ? lastBooked.gym : null  
-
-  console.log(lastBooked)
 
   return <>
     <section className="section confirmation-section">

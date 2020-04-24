@@ -15,9 +15,6 @@ const SearchForm = ({ query, onChange }) => {
               onChange={onChange}
             />
           </div>
-          {/* <div className="control">
-            <a className="button is-info is-medium">Search</a>
-          </div> */}
         </div>
       </div>
     </div>
