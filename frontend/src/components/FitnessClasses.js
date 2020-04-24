@@ -20,8 +20,6 @@ const FitnessClasses = (props) => {
         const sortedData = unsortedData.sort((a,b) => {
           return parseInt(a.time_of_class.split(':').join('')) - parseInt(b.time_of_class.split(':').join(''))
         })
-        // console.log(unsortedData)
-        // console.log(sortedData)
         setAllClasses(sortedData)
         setFilteredClass(sortedData)
       })

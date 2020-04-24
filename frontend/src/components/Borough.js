@@ -25,7 +25,7 @@ class Borough extends React.Component {
         })
       })
       .then(() => {
-        console.log(this.state.boroughs)
+        // console.log(this.state.boroughs)
       })
       .catch(error => console.error(error))
   }

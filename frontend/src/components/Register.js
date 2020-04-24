@@ -45,7 +45,6 @@ const Register = (props) => {
       })
   }
 
-  console.log(errors.email)
 
 
   return <section className="section register-section">

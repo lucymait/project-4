@@ -13,7 +13,6 @@ const Login = (props) => {
     setLoginData(data)
   }
 
-  console.log(LoginData)
 
   function handleSubmit(event) {
     event.preventDefault()
@@ -27,7 +26,6 @@ const Login = (props) => {
       })
   }
 
-  console.log(error)
   return <section className="section login-section">
     <img src='https://i.imgur.com/50EzKYk.png' />
     <form

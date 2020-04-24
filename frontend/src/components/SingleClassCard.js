@@ -24,13 +24,7 @@ const SingleClassCard = ( { props, id, name, time_of_class, gym, instructor, des
       })
   }
 
-//   function compare(a,b) {
-//     const a = {time_of_class}
-//     const b = {time_of_class}
-//  }
 
-
-  // console.log(props)
   return <>
     <div className="card class-card" key={id}>
       <div className="card-content">
