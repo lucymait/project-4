@@ -158,7 +158,7 @@
     "activity_type": "Yoga",
     "instructor": 1,
     "description": "This 1 hour class at Yogarise is based on a dynamic sequence of postures practiced with focused breathing techniques, designed specifically to align the body and strengthen the nervous system, while cultivating a feeling of inner peace and leading to a natural state of meditation.",
-    "time_of_class": "18:00",
+    "time_of_class": "20:30",
     "comment": []
   }
 },
@@ -184,7 +184,7 @@
     "activity_type": "HIIT",
     "instructor": 7,
     "description": "Step into a BODYCOMBAT workout and you\u2019ll punch and kick your way to fitness, burning up to 740 calories along the way. This high-energy martial-arts inspired workout is totally non-contact and there are no complex moves to master.",
-    "time_of_class": "17:00",
+    "time_of_class": "07:00",
     "comment": []
   }
 },
@@ -197,7 +197,7 @@
     "activity_type": "HIIT",
     "instructor": 3,
     "description": "An excellent workout designed to raise your heart rate, improve your fitness and boost your energy levels",
-    "time_of_class": "20:00",
+    "time_of_class": "08:00",
     "comment": []
   }
 },
@@ -210,7 +210,7 @@
     "activity_type": "Boxing",
     "instructor": 4,
     "description": "The class is predominantly bodyweight exercises blended with boxing drills and techniques. All of our coaches are current or former boxers with years of boxing knowledge and experience",
-    "time_of_class": "19:00",
+    "time_of_class": "17:30",
     "comment": []
   }
 },
@@ -223,7 +223,7 @@
     "activity_type": "Pilates",
     "instructor": 6,
     "description": "Pilates improves flexibility, builds strength and develops control and endurance in the entire body. Our mat based classes emphasise alignment, core development and will improve your coordination and balance. Our instructors use both classical and contemporary approaches to create physically challenging classes which are open to all levels.",
-    "time_of_class": "07:00",
+    "time_of_class": "18:00",
     "comment": []
   }
 },
@@ -249,7 +249,7 @@
     "activity_type": "Barre",
     "instructor": 9,
     "description": "Pure Barre is an intelligent fusion of Pilates, classical ballet exercises and yoga stretches. No equipment is used during these sessions.",
-    "time_of_class": "19:30",
+    "time_of_class": "19:00",
     "comment": []
   }
 },
@@ -262,7 +262,7 @@
     "activity_type": "HIIT",
     "instructor": 8,
     "description": "This high energy, intense conditioning session will be made up of a combination of body weight exercises. This true full body workout will push you to the limits but enjoy the benefits.",
-    "time_of_class": "06:00",
+    "time_of_class": "19:30",
     "comment": []
   }
 },
@@ -283,7 +283,7 @@
   "model": "fitness.borough",
   "pk": 1,
   "fields": {
-    "name": "Hammersmith",
+    "name": "Hammersmith & Fulham",
     "image": "https://media.timeout.com/images/105616695/image.jpg",
     "fitnessclass": [
       8,
@@ -517,118 +517,6 @@
       10,
       1
     ]
-  }
-},
-{
-  "model": "fitness.bookedclass",
-  "pk": 23,
-  "fields": {
-    "name": "Yogarise",
-    "gym": "The Gym",
-    "activity_type": "Yoga",
-    "instructor": "Lucy",
-    "description": "This 1 hour class at Yogarise is based on the Primary Series \u2013 a dynamic sequence of postures practiced with focused breathing techniques, designed specifically to align the body and strengthen the nervous system, while cultivating a feeling of inner peace and leading to a natural state of meditation.",
-    "time_of_class": "18:00",
-    "data_booked": "Apr 22nd",
-    "user": 18
-  }
-},
-{
-  "model": "fitness.bookedclass",
-  "pk": 24,
-  "fields": {
-    "name": "Yogarise",
-    "gym": "The Gym",
-    "activity_type": "Yoga",
-    "instructor": "Lucy",
-    "description": "This 1 hour class at Yogarise is based on the Primary Series \u2013 a dynamic sequence of postures practiced with focused breathing techniques, designed specifically to align the body and strengthen the nervous system, while cultivating a feeling of inner peace and leading to a natural state of meditation.",
-    "time_of_class": "18:00",
-    "data_booked": "Apr 22nd",
-    "user": 18
-  }
-},
-{
-  "model": "fitness.bookedclass",
-  "pk": 25,
-  "fields": {
-    "name": "Pure Barre",
-    "gym": "Anytime Fitness",
-    "activity_type": "Barre",
-    "instructor": "Casey",
-    "description": "Pure Barre is an intelligent fusion of Pilates, classical ballet exercises and yoga stretches. No equipment is used during these sessions.",
-    "time_of_class": "19:30",
-    "data_booked": "Apr 22nd",
-    "user": 18
-  }
-},
-{
-  "model": "fitness.bookedclass",
-  "pk": 26,
-  "fields": {
-    "name": "Pure Barre",
-    "gym": "Anytime Fitness",
-    "activity_type": "Barre",
-    "instructor": "Casey",
-    "description": "Pure Barre is an intelligent fusion of Pilates, classical ballet exercises and yoga stretches. No equipment is used during these sessions.",
-    "time_of_class": "19:30",
-    "data_booked": "Apr 22nd",
-    "user": 18
-  }
-},
-{
-  "model": "fitness.bookedclass",
-  "pk": 27,
-  "fields": {
-    "name": "Pure Barre",
-    "gym": "Anytime Fitness",
-    "activity_type": "Barre",
-    "instructor": "Casey",
-    "description": "Pure Barre is an intelligent fusion of Pilates, classical ballet exercises and yoga stretches. No equipment is used during these sessions.",
-    "time_of_class": "19:30",
-    "data_booked": "Apr 22nd",
-    "user": 18
-  }
-},
-{
-  "model": "fitness.bookedclass",
-  "pk": 28,
-  "fields": {
-    "name": "Yogarise",
-    "gym": "The Gym",
-    "activity_type": "Yoga",
-    "instructor": "Lucy",
-    "description": "This 1 hour class at Yogarise is based on the Primary Series \u2013 a dynamic sequence of postures practiced with focused breathing techniques, designed specifically to align the body and strengthen the nervous system, while cultivating a feeling of inner peace and leading to a natural state of meditation.",
-    "time_of_class": "18:00",
-    "data_booked": "Apr 22nd",
-    "user": 18
-  }
-},
-{
-  "model": "fitness.bookedclass",
-  "pk": 29,
-  "fields": {
-    "name": "Pure Barre",
-    "gym": "Anytime Fitness",
-    "activity_type": "Barre",
-    "instructor": "Casey",
-    "description": "Pure Barre is an intelligent fusion of Pilates, classical ballet exercises and yoga stretches. No equipment is used during these sessions.",
-    "time_of_class": "19:30",
-    "data_booked": "Apr 22nd",
-    "user": 18
-  }
-},
-{
-  "model": "fitness.bookedclass",
-  "pk": 30,
-  "fields": {
-    "name": "Pure Barre",
-    "gym": "Anytime Fitness",
-    "activity_type": "Barre",
-    "instructor": "Casey",
-    "description": "Pure Barre is an intelligent fusion of Pilates, classical ballet exercises and yoga stretches. No equipment is used during these sessions.",
-    "time_of_class": "19:30",
-    "data_booked": "Apr 22nd",
-    "user": 18
   }
 }
 ]
