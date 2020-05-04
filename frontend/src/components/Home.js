@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const Home = () => (
   <section className="hero is-light is-fullheight homepage">
-    <img id='background-image' src='https://images.squarespace-cdn.com/content/v1/52540926e4b0d49865bee20d/1525949988855-GMKRG7DQ2UKZYSYRBQ1M/ke17ZwdGBToddI8pDm48kLR2rgEg1jPu1GtjV4K1vZ97gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0scl71iiVnMuLeEyTFSXT3qwhEKW1IfUKL5GUNLdDa9MjuPXcXiDenG_NSvE-2lGCg/HAN_0062.jpg' />
+    <img id='background-image'/>
     <div className="hero-body">
       <div className="container has-text-centered">
         <div className="title">

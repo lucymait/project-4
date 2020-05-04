@@ -3,6 +3,8 @@
 
 by [Lucy Maitland](https://github.com/lucymait) and [Annie Kayal](https://github.com/annie-kayal)
 
+
+
 ## Overview
 
 FITBOOK was my fourth project, with General Assembly, during the software engineering immersive course. Myself and Annie chose to work in a pair, to build a full-stack application within **one week**.
@@ -18,11 +20,11 @@ Check out the top fitness classes in your area, [here]().
 ## Brief
 
 - Choose to work solo or in a team
-- Build a full-stack app, by making your own backend and your own front-end
-- Use a Python Django API, using Django REST Framework to serve your data from a Postgres database
-- Consume your API with a separate front-end, built with React
-- Contain multiple relationships and CRUD functionality
-- Be deployed online and accessible to the public.
+- **Build a full-stack application** by making your own backend and your own front-end
+- **Use a Python Django API** using Django REST Framework to serve your data from a Postgres database
+- **Consume your API with a separate front-end** built with React
+- **Be a complete product** which most likely means multiple relationships and CRUD functionality for at least a couple of models
+- **Be deployed online** so it's publicly accessible.
 
 ## Technologies Used
 
@@ -245,6 +247,30 @@ class PopulateFitnessClassSerializer(serializers.ModelSerializer):
 # Frontend
 
 ## Screenshots
+
+### Home Page
+![Home Page](/Images/home.png)
+
+### Register Page
+![Register Page](/Images/register.png)
+
+### Login Page
+![Login Page](/Images/login.png)
+
+### Borough Page
+![Borough Page](/Images/borough.png)
+
+### Fitness Classes Page
+![Classes Page](/Images/classes.png)
+
+### Single Fitness Class Page
+![Single Fitness Class Page](/Images/single.png)
+
+### Booking Confirmation Page
+![Booking Confirmation Page](/Images/booking.png)
+
+### Profile Page
+![Profile Page](/Images/profile.png)
 
 ## Potential Future Features
 
