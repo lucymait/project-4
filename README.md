@@ -500,9 +500,6 @@ Rendered
 <td>
 <pre>
 
-
-- We can now use our serializers in the view, to not only convert the database data into JSON, but also to turn the client request data into model instances ready to be saved to the database.
-
 ```js
             <select onChange={(e) => filterClasses(e)}>            
               <option value="All">All</option>
@@ -516,7 +513,6 @@ Rendered
             </select>
 ```
 
-<<<<<<< HEAD
 </pre>
 </td>
 <td>
@@ -526,12 +522,6 @@ Rendered
 </td>
 </tr>
 </table>
-=======
-  class Meta:
-    model = FitnessClass
-    fields = ('id', 'name', 'gym', 'activity_type', 'instructor', 'time_of_class', 'description', 'comment')
-```
->>>>>>> 4ae69ffed9011564ca98de06795bb0e4cfe422da
 
 
 The select element has an `onChange` attached it, whereby the filtering function will run: 
