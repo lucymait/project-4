@@ -500,7 +500,6 @@ Rendered
 <td>
 <pre>
 
-
 ```js
             <select onChange={(e) => filterClasses(e)}>            
               <option value="All">All</option>
