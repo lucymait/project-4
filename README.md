@@ -501,6 +501,8 @@ Rendered
 <pre>
 
 
+- We can now use our serializers in the view, to not only convert the database data into JSON, but also to turn the client request data into model instances ready to be saved to the database.
+
 ```js
             <select onChange={(e) => filterClasses(e)}>            
               <option value="All">All</option>
@@ -514,6 +516,7 @@ Rendered
             </select>
 ```
 
+<<<<<<< HEAD
 </pre>
 </td>
 <td>
@@ -523,6 +526,12 @@ Rendered
 </td>
 </tr>
 </table>
+=======
+  class Meta:
+    model = FitnessClass
+    fields = ('id', 'name', 'gym', 'activity_type', 'instructor', 'time_of_class', 'description', 'comment')
+```
+>>>>>>> 4ae69ffed9011564ca98de06795bb0e4cfe422da
 
 
 The select element has an `onChange` attached it, whereby the filtering function will run: 
@@ -541,6 +550,32 @@ The select element has an `onChange` attached it, whereby the filtering function
   }
 ```
 This function runs in a similar way to the filtering on the Borough page. However, in this instance, we take the value of the option and apply the `filter` method to all the fitness classes within that borough and return the classes matching the value. 
+
+### Home Page
+<img src="./Images/Home.png" width="225" height="400"/> <br/>
+
+<img src="./Images/Home2.png" width="800" height="550" />
+
+### Register Page
+<img src="./Images/Register.png" width="225" height="400"/>
+
+### Login Page
+<img src="./Images/Login.png" width="225" height="400"/>
+
+### Borough Page
+<img src="./Images/Borough.png" width="225" height="400"/>
+
+### Fitness Classes Page
+<img src="./Images/Classes.png" width="225" height="400"/>
+
+### Single Fitness Class Page
+<img src="./Images/Class.png" width="225" height="400"/>
+
+### Booking Confirmation Page
+<img src="./Images/Booking.png" width="225" height="400"/>
+
+### Profile Page
+<img src="./Images/Profile.png" width="225" height="400"/>
 
 ## Potential Future Features
 
