@@ -223,68 +223,6 @@ class PopulateBoroughSerializer(serializers.ModelSerializer):
     fields = ('id', 'name', 'image', 'fitnessclass')
 ```
 
-## Serializers
-
-- The serializer sits in front of the model, it validates the data coming from the client, before it reaches the model, and it also serialises the data (turns it into a JSON string) after the model has retrieved the data from the database.
-
-- The model property indicates which model the serializer should base its serialisation on, and the fields property defines which fields should be output to the JSON string, or be included when validating the data from the client.
-
-### 1. JWT_AUTH
-
-```js
-class UserSerializer(serializers.ModelSerializer):
-
-    password = serializers.CharField(write_only=True)
-    password_confirmation = serializers.CharField(write_only=True)
-
-    def validate(self, data):
-
-        password = data.pop('password')
-        password_confirmation = data.pop('password_confirmation')
-
-        if not password:
-            raise serializers.ValidationError({'password': 'Not a valid Password'})
-
-        if password != password_confirmation:
-            raise serializers.ValidationError({'password_confirmation': 'Passwords do not match'})
-
-        try:
-            validations.validate_password(password=password)
-        except ValidationError as err:
-            raise serializers.ValidationError({'password': err.messages})
-
-        data['password'] = make_password(password)
-        return data 
-
-    class Meta:
-        model = User
-        fields = ('id', 'username', 'email', 'image', 'password', 'password_confirmation','fitness')
-        extra_kwargs = {
-          'fitness' : {'required': False}
-        }
-```
-
-### 2. FITNESS
-
-- We can now use our serializers in the view, to not only convert the database data into JSON, but also to turn the client request data into model instances ready to be saved to the database.
-
-```js
-class FitnessClassSerializer(serializers.ModelSerializer):
-  class Meta:
-    model = FitnessClass
-    fields = ('id', 'name', 'gym', 'activity_type', 'instructor', 'time_of_class', 'description', 'comment')
-```
-```js
-class PopulateFitnessClassSerializer(serializers.ModelSerializer):
-  instructor = InstructorSerializer()
-  gym = GymSerializer()
-  comment = CommentSerializer(many=True)
-
-  class Meta:
-    model = FitnessClass
-    fields = ('id', 'name', 'gym', 'activity_type', 'instructor', 'time_of_class', 'description', 'comment')
-```
-
 ## Views
 
 The views in each app, highlighted our API End-points. 
