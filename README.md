@@ -143,6 +143,85 @@ class User(AbstractUser):
   image = models.ImageField(upload_to='profile_image', blank=True)
   email = models.EmailField(unique=True, error_messages={'unique':"This email has already been registered."})
   ```
+## Serializers
+
+- The serializer sits in front of the model, it validates the data coming from the client, before it reaches the model, and it also serialises the data (turns it into a JSON string) after the model has retrieved the data from the database.
+
+- The model property indicates which model the serializer should base its serialisation on, and the fields property defines which fields should be output to the JSON string, or be included when validating the data from the client.
+
+### 1. JWT_AUTH
+
+- We created a user serializer that will check that the password and password_confirmation fields match, if they do not match, we send a validation error to the user. 
+
+- We then use Django's built in validate_password method that checks the strength of the password. This is the same method used when creating a super user in the terminal. It ensures that passwords aren't too weak. 
+
+- Finally we hash the password using Django's in-built make_password function, and we store it back on the data object. This will become the serializer.data property and will ultimately get stored in the database.
+
+```js
+class UserSerializer(serializers.ModelSerializer):
+
+    password = serializers.CharField(write_only=True)
+    password_confirmation = serializers.CharField(write_only=True)
+
+    def validate(self, data):
+
+        password = data.pop('password')
+        password_confirmation = data.pop('password_confirmation')
+
+        if not password:
+            raise serializers.ValidationError({'password': 'Not a valid Password'})
+
+        if password != password_confirmation:
+            raise serializers.ValidationError({'password_confirmation': 'Passwords do not match'})
+
+        try:
+            validations.validate_password(password=password)
+        except ValidationError as err:
+            raise serializers.ValidationError({'password': err.messages})
+
+        data['password'] = make_password(password)
+        return data 
+
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'email', 'image', 'password', 'password_confirmation','fitness')
+        extra_kwargs = {
+          'fitness' : {'required': False}
+        }
+```
+
+### 2. FITNESS
+
+- We can now use our serializers in the view, to not only convert the database data into JSON, but also to turn the client request data into model instances ready to be saved to the database.
+
+- The model property indicates which model the serializer should base its serialisation on, and the fields property defines which fields should be output to the JSON string, or be included when validating the data from the client.
+
+```js
+class FitnessClassSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = FitnessClass
+    fields = ('id', 'name', 'gym', 'activity_type', 'instructor', 'time_of_class', 'description', 'comment')
+```
+
+- As our FitnessClass Serializer and Borough Serializer have nested relationships within their models, we had to populate the serializers in order to display the nested data. 
+
+```js
+class PopulateFitnessClassSerializer(serializers.ModelSerializer):
+  instructor = InstructorSerializer()
+  gym = GymSerializer()
+  comment = CommentSerializer(many=True)
+
+  class Meta:
+    model = FitnessClass
+    fields = ('id', 'name', 'gym', 'activity_type', 'instructor', 'time_of_class', 'description', 'comment')
+
+class PopulateBoroughSerializer(serializers.ModelSerializer):
+  fitnessclass = PopulateFitnessClassSerializer(many=True, required=False)
+
+  class Meta:
+    model = Borough
+    fields = ('id', 'name', 'image', 'fitnessclass')
+```
 
 ## Views
 
@@ -182,6 +261,7 @@ class LoginView(APIView):
         return Response({'token': token, 'message': f'Welcome back {user.username}!'})
 ```
 - /profile has a GET, PUT and DELETE route, all relating to the user data of the user currently logged in, allowing them to respectively fetch, amend and delete their profile information.
+
 ```js
 class ProfileView(APIView):
   permission_classes = (IsAuthenticated, )
@@ -275,72 +355,209 @@ class BookedClassDetailView(APIView):
     return Response(status=HTTP_204_NO_CONTENT)
 ```
 
-
-## Serializers
-
-- The serializer sits in front of the model, it validates the data coming from the client, before it reaches the model, and it also serialises the data (turns it into a JSON string) after the model has retrieved the data from the database.
-
-- The model property indicates which model the serializer should base its serialisation on, and the fields property defines which fields should be output to the JSON string, or be included when validating the data from the client.
-
-### 1. JWT_AUTH
-
-```js
-class UserSerializer(serializers.ModelSerializer):
-
-    password = serializers.CharField(write_only=True)
-    password_confirmation = serializers.CharField(write_only=True)
-
-    def validate(self, data):
-
-        password = data.pop('password')
-        password_confirmation = data.pop('password_confirmation')
-
-        if not password:
-            raise serializers.ValidationError({'password': 'Not a valid Password'})
-
-        if password != password_confirmation:
-            raise serializers.ValidationError({'password_confirmation': 'Passwords do not match'})
-
-        try:
-            validations.validate_password(password=password)
-        except ValidationError as err:
-            raise serializers.ValidationError({'password': err.messages})
-
-        data['password'] = make_password(password)
-        return data 
-
-    class Meta:
-        model = User
-        fields = ('id', 'username', 'email', 'image', 'password', 'password_confirmation','fitness')
-        extra_kwargs = {
-          'fitness' : {'required': False}
-        }
-```
-
-### 2. FITNESS
-
-- We can now use our serializers in the view, to not only convert the database data into JSON, but also to turn the client request data into model instances ready to be saved to the database.
-
-```js
-class FitnessClassSerializer(serializers.ModelSerializer):
-  class Meta:
-    model = FitnessClass
-    fields = ('id', 'name', 'gym', 'activity_type', 'instructor', 'time_of_class', 'description', 'comment')
-```
-```js
-class PopulateFitnessClassSerializer(serializers.ModelSerializer):
-  instructor = InstructorSerializer()
-  gym = GymSerializer()
-  comment = CommentSerializer(many=True)
-
-  class Meta:
-    model = FitnessClass
-    fields = ('id', 'name', 'gym', 'activity_type', 'instructor', 'time_of_class', 'description', 'comment')
-```
-
 # Frontend
 
-## Screenshots
+Having completed our custom built API and ensuring all the relevant information was displaying correctly, focus could now be placed on the UX perspective. Before diving into building the pages, a user story needed to be conceptualized to ensure a smooth and functional app from the user view. 
+<div style='text-align:center'>
+<img src='https://i.imgur.com/FHOUyxE.jpg' width='800'>
+</div>
+
+Once we were clear on how the user journey would be made, we quickly got started on building our React components.
+
+The nature of this app was to primarily be used on **mobile apps** as users would be likely to view class availability during their day. Because of this, the app was designed to be mobile first. We implemented using a CSS framework into our project in order to focus on the functionality of how the components would work.
+
+## Hompage 
+
+- The homepage was built with limited accessibility for users. In designing our backend, content would only be available to users who had created an account. The landing page therefore prompts users to either create an account or to login using buttons to redirect them to the appropriate page. 
+ 
+<div style='text-align:center'>
+<img src='https://i.imgur.com/M2JoNvj.png' height='500'>
+</div>
+
+## Registering 
+
+Depending on what the user has selected from the landing page, a redirection is made to either the register or login components. 
+
+- We wanted to be able to allow users to upload their own individual profile pictures to our database which renders in their profile. This was a strict piece of code which unfortunately was unable to be deployed to Heroku as their database ignores image files.
+
+- However, this was achieved locally: 
+
+```js 
+    const body = new FormData()
+
+  function handleSubmit(event) {
+    event.preventDefault()
+    const imageInput = document.getElementsByClassName('image-field')
+    const image = imageInput.image.files
+    body.append('email', registerData.email)
+    body.append('username', registerData.username ? registerData.username : '')
+    body.append('password', registerData.password ? registerData.password : '')
+    body.append('password_confirmation', registerData.password_confirmation ? registerData.password_confirmation : '')
+    body.append('image', image.length === 0 ? registerData.image : image[0])
+    axios.post('/api/register',
+      body)
+      .then(() => {
+        const login = new FormData()
+        login.append('email', registerData.email)
+        login.append('password', registerData.password)
+        axios.post('/api/login', login)
+          .then(resp => {
+            auth.setToken(resp.data.token)
+            props.history.push('/profile')
+          })
+      })
+      .catch(err => {
+        setErrors(err.response.data)
+      })
+  }
+```
+
+  - To enable this feature for our users, an important aspect was **accessing the file uploaded**. 
+
+  - In retrieving this, we used DOM manipulation to access the input that was rendered on the page using the class that was assigned to it. 
+
+  - Reviewing the element in the console, we were able to locate the image itself, shown as the variable `image’ which stored the image within an array. 
+
+  - However, we needed to be able to send this image as well as the other registered information in the shape of a form. To do so, we used the `FormData` method. 
+
+  - As the image is the last input to be completed by the user, all the other information inputted by the user to register was stored into state. We were able to append all the information the user inputted to the `FormData` and send this as a request to our API. 
+
+### Error Handling
+
+Displaying error messages to users on the register and login components was another feature we added into the frontend. We thought this would be key as users would be able to identify why they were unable to register or login so they were able to take the right steps. 
+
+  - Because of the design of the register and login views, a response using Django was able to be retrieved with why a user would not have been able to register or login. We were able to store this within state and display this using `ternary operators` per input: 
+
+  ```js
+  {errors.email ? <p>{errors.email[0]}
+   </p> : null}
+  ```
+<div style='text-align:center'>
+<img src='https://i.imgur.com/tVMymyR.png' height='500'>
+<img src='https://i.imgur.com/liq1Om6.png' height='500'>
+</div>
+
+
+  ## Profile 
+
+  For every user who created an account, they would also be given their own profile page. From there they were able to access all functionalities of the app including booking and deleting classes. 
+
+As mentioned before, users were given the opportunity to upload an image from their computer into the database. This photo would be displayed on this page. 
+
+However, it wasn’t required for users to upload an image if they chose not for their own reasons. To avoid a blank space to be in place where the uploaded photo would be, we decided to implement a default image to be in place if this was the case using a `ternary operator` as the image source: 
+
+```js 
+<img src={profile.image === null ? 'https://static.thenounproject.com/png/629576-200.png' : `http://localhost:8000${profile.image}`} />
+```
+As mentioned, this was successful in the development stages of the project, however Heroku does not allow image uploads. 
+
+The profile also contained another `ternary operator` to display if the user had booked any classes. By deciding to put a button in place to browse through boroughs, users are immediately prompted and this fills a blank space on the page. 
+
+The screenshots below are taken from the development stage to illustrate the image operator at work: 
+
+<div style='text-align:center'>
+<img src='https://i.imgur.com/bhHOrMw.png' height='500'>
+<img src='https://i.imgur.com/uc2jqaG.png' height='500'>
+</div>
+
+## Borough & Class Filtering
+
+Now that users have access to all the app functionality, they are able to browse through the Boroughs that are available on the app. We decided to implement 12 Boroughs as a whole to demonstrate how the page would look with multiple boroughs available and when the page scrolls, other components would not be affected and the design would stay intact. 
+
+A feature often seen on pages where multiple choices are available, such as our boroughs, a filtration is available for users to quickly find one of their choosing. We also decided to use this for enhanced user experience.  Our filtering technique finds any borough on their name. 
+
+Achieving this required three pieces of state to be used: 
+
+`boroughs` - to store all the boroughs </br>
+`filteredBoroughs` - to store all the boroughs as well </br>
+`query` - to store what is typed by the user when they search
+
+  As well as the following steps:
+
+  1. Once the page renders, a GET request is made to the ALL boroughs endpoint and this is stored into the `boroughs` and `filteredBoroughs` state. 
+
+  2. In the render method, a search form is visible which also has a `onChange` event handler, where the `filteredBoroughs()` function is called:
+
+  ```js
+    filterBoroughs(event) {
+    const searchQuery = event.target.value
+    const filteredBoroughs = this.state.boroughs.filter(borough => {
+      const regex = new RegExp(searchQuery, 'i')
+      return borough.name.match(regex)
+    })
+    this.setState({
+      query: searchQuery,
+      filteredBoroughs: filteredBoroughs
+    })
+  }
+  ```
+
+  3. This function targets our input value within the search form, which we have given the state `query`. 
+
+  4. The `filter` function is then applied to the `filteredBorough` state and stored into a variable. This returns names which match the letters in any Borough name through the `match()` method. 
+
+  5. During this, the state of `query` and `filteredBoroughs` are reset. The `query` is set to be the input value and `filteredBoroughs` is set to be the variable where the filter method was applied. 
+
+We also applied a filter once a user selects a Borough they would like to book a class in. This filter allows the user to view classes by the class type i.e HIIT. 
+
+This filter took a slightly different approach and used options to filter through the classes available rather than by freely typing. 
+
+First, we needed to render a drop down onto the page with values that are the class types: 
+
+<table>
+<tr>
+<th>
+Code Snippet
+</th>
+<th>
+Rendered
+</th>
+</tr>
+
+<tr>
+<td>
+<pre>
+
+```js
+            <select onChange={(e) => filterClasses(e)}>            
+              <option value="All">All</option>
+              <option value="Yoga">Yoga</option>
+              <option value="HIIT">HIIT</option>
+              <option value="Barre">Barre</option>
+              <option value="Dance">Dance</option>
+              <option value="Pilates">Pilates</option>
+              <option value="Boxing">Boxing</option>
+              <option value="Cycling">Cycling</option>
+            </select>
+```
+
+</pre>
+</td>
+<td>
+<pre>
+<img src='https://i.imgur.com/m6uuTvY.png' height='200'>
+</pre>
+</td>
+</tr>
+</table>
+
+
+The select element has an `onChange` attached it, whereby the filtering function will run: 
+
+```js
+  function filterClasses(e) {
+    const chosenClass = e.target.value
+    if (e.target.value === 'All') {
+      setFilteredClass(AllfitnessClasses)
+    } else {
+      const filteredClasses = AllfitnessClasses.filter(classes => {
+        return classes.activity_type === chosenClass
+      })
+      setFilteredClass(filteredClasses)
+    }
+  }
+```
+This function runs in a similar way to the filtering on the Borough page. However, in this instance, we take the value of the option and apply the `filter` method to all the fitness classes within that borough and return the classes matching the value. 
 
 ### Home Page
 <img src="./Images/Home.png" width="225" height="400"/> <br/>
@@ -370,14 +587,16 @@ class PopulateFitnessClassSerializer(serializers.ModelSerializer):
 
 ## Potential Future Features
 
-- Add Live Comments to each fitness class
-- Max Limit on class
-- Time constraints on weekly classes (data configuration)
-- Creating secure routes in app.js
+- To implement comments to each fitness class. Users could comment on the class if they attended it and give their opinion on it.
+- At the moment however many people can book onto a class. In reality, fitness classes have limit to how attendees. This would be great to implement to visually show users if a class was full if the max number was met and if a space were to open up, the class would be available to be booked again.  
+- At the moment the app focuses on booking classes which are in 24 hours. We would like to implement classes for the week. 
+- A user being able to delete their account
+- A chat feature where users could interact with an instructor if they wanted personal training. 
 
 ## Lessons Learned
 
-- A big lesson learnt was the importance of how well you design your schema. This will have a great impact on developing the frontend, to ensure the best user experience.
-- Importance of configuring Django early e.g. configuring Images 
-- Creating a fixture files early on, important in the time-frame
-- User expierence (booking confirmation)
+- The importance of designing your models and the fields correctly was a great lesson learnt. In development, by ensuring these are correct it will make accessing and making requests to the API. 
+
+- Importance of configuring Django early e.g. configuring Images. Implementing images was done very late on during the process and required a configuration to the backend. It would've been wiser to have investigated this earlier to ensure our project was set up correctly. 
+
+- Create a fixture files early on. Experimenting with data became incredibly difficult to keep track off whilst testing to ensure all the functionality pulled through into the frontend correctly. If a fixtures file was made earlier, we would've spent more time on creating functionality. 
