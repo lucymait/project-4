@@ -17,6 +17,8 @@ After lots of planning, we decided to create a fitness class booking app, where 
 
 Check out the top fitness classes in your area, [here](https://fitbook-fitness.herokuapp.com/#/).
 
+**Please note**, due to the Heroku deficiency, Heroku is unable to upload images in our Registration Form. When using the app on Heroku, you will be unable to upload a photo, however we have implemented a default image to be present when an image is not uploaded. On the other hand, we have proof this works locally, please see below in our ReadMe.
+
 ## Brief
 
 - Choose to work solo or in a team
@@ -588,15 +590,15 @@ This function runs in a similar way to the filtering on the Borough page. Howeve
 ## Potential Future Features
 
 - To implement comments to each fitness class. Users could comment on the class if they attended it and give their opinion on it.
-- At the moment however many people can book onto a class. In reality, fitness classes have limit to how attendees. This would be great to implement to visually show users if a class was full if the max number was met and if a space were to open up, the class would be available to be booked again.  
+- At the moment there is no limit on the number of people who can book onto a class. In reality, fitness classes have a limit to the number of attendees. This would be great to implement to visually show users if a class was full if the max number was met and if a space were to open up, the class would be available to be booked again.  
 - At the moment the app focuses on booking classes which are in 24 hours. We would like to implement classes for the week. 
 - A user being able to delete their account
 - A chat feature where users could interact with an instructor if they wanted personal training. 
 
 ## Lessons Learned
 
-- The importance of designing your models and the fields correctly was a great lesson learnt. In development, by ensuring these are correct it will make accessing and making requests to the API. 
+- The importance of designing your models and the fields correctly was a great lesson learnt. In development, by ensuring these are correct it will make accessing and making requests to the API much easier. 
 
 - Importance of configuring Django early e.g. configuring Images. Implementing images was done very late on during the process and required a configuration to the backend. It would've been wiser to have investigated this earlier to ensure our project was set up correctly. 
 
-- Create a fixture files early on. Experimenting with data became incredibly difficult to keep track off whilst testing to ensure all the functionality pulled through into the frontend correctly. If a fixtures file was made earlier, we would've spent more time on creating functionality. 
+- Create a fixture files early on. Experimenting with data became incredibly difficult to keep track off whilst testing, to ensure all the functionality pulled through into the frontend correctly. If a fixtures file was made earlier, we would've spent more time on creating functionality. 
