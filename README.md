@@ -17,7 +17,7 @@ After lots of planning, we decided to create a fitness class booking app, where 
 
 Check out the top fitness classes in your area, [here](https://fitbook-fitness.herokuapp.com/#/).
 
-**Please note**, due to the Heroku deficiency, Heroku is unable to upload images in our Registration Form. When using the app on Heroku, you will be unable to upload a photo, however we have implemented a default image to be present when an image is not uploaded. On the other hand, we have proof this works locally, please see below in our ReadMe.
+**Please note:** Due to the Heroku deficiency, Heroku is unable to upload images in our Registration Form. When using the app on Heroku, you will be unable to upload a photo, however we have implemented a default image to be present when an image is not uploaded. On the other hand, we have proof this works locally, please see below in our ReadMe.
 
 ## Brief
 
