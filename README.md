@@ -58,6 +58,7 @@ First, we had to create a superuser in order to view the admin user section. Nex
 In the first stage, we created our Entity Relationship Diagram (as seen below). This illustrated the different relationships between each model, whether its a one to many or many to many relationship. It was important deciding the relationships at an early stage, so that our models and database wasn't affected. 
 
 <img src="./Images/Planning.png" width="600" height="400"/> <br/>
+<img src='https://i.imgur.com/9G9yg80.png'>
 
 ## Models
 
@@ -590,10 +591,20 @@ This function runs in a similar way to the filtering on the Borough page. Howeve
 ## Potential Future Features
 
 - To implement comments to each fitness class. Users could comment on the class if they attended it and give their opinion on it.
+
 - At the moment there is no limit on the number of people who can book onto a class. In reality, fitness classes have a limit to the number of attendees. This would be great to implement to visually show users if a class was full if the max number was met and if a space were to open up, the class would be available to be booked again.  
+
 - At the moment the app focuses on booking classes which are in 24 hours. We would like to implement classes for the week. 
+
 - A user being able to delete their account
-- A chat feature where users could interact with an instructor if they wanted personal training. 
+
+- A chat feature where users could interact with an instructor if they wanted personal training.
+
+## Biggest Challenge & Win
+
+- My biggest challenge and win was the Image upload functionality. This functionality was for the user profile picture that allows users to add a file (rather than a link) from the frontend, and then store the encrypted version in the app's backend. We managed to solve this through creating a Media Root to store the profile images in our backend and then appending all the information the user inputted to the `FormData` in the frontend.
+
+- Another win was using react hooks for the first time, this involved looking through the documentation and ensuring we implemeneted hooks correctly.
 
 ## Lessons Learned
 
