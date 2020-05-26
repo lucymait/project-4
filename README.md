@@ -22,11 +22,11 @@ Check out the top fitness classes in your area, [here](https://fitbook-fitness.h
 ## Brief
 
 - Choose to work solo or in a team
-- **Build a full-stack application** by making your own backend and your own front-end
-- **Use a Python Django API** using Django REST Framework to serve your data from a Postgres database
-- **Consume your API with a separate front-end** built with React
+- **Build a full-stack application** by making a backend and a front-end
+- **Use a Python Django API** using Django REST Framework to serve data from a Postgres database
+- **Consume the API with a separate front-end** built with React
 - **Be a complete product** which most likely means multiple relationships and CRUD functionality for at least a couple of models
-- **Be deployed online** so it's publicly accessible.
+- **Be deployed online** so it's publicly accessible
 
 ## Technologies Used
 
@@ -49,13 +49,13 @@ Check out the top fitness classes in your area, [here](https://fitbook-fitness.h
 
 ## Approach 
 
-When building our project; Django created a main project folder (for us) which contains all the project URLS and settings, including the database configuration. It also comes with a built-in CMS where the user can directly add, update and delete database records, and pre made authentication. 
+When building our project, Django created a main project folder (for us) which contains all the project URLS and settings, including the database configuration. It also comes with a built-in CMS where the user can directly add, update and delete database records, and pre made authentication. 
 
-First, we had to create a superuser in order to view the admin user section. Next we created our app (fitness) which is part of the project and has its own set of URLS, models, views and serializers. We can link our app into the Django project by modifying some settings in the project folder.
+First, we had to create a superuser in order to view the admin user section. Next we created our app (fitness) which is part of the project and has its own set of URLS, models, views and serializers. We could link our app into the Django project by modifying some settings in the project folder.
 
 ### Planning
 
-In the first stage, we created our Entity Relationship Diagram (as seen below). This illustrated the different relationships between each model, whether its a one to many or many to many relationship. It was important deciding the relationships at an early stage, so that our models and database wasn't affected. 
+In the first stage, we created our Entity Relationship Diagram (as seen below). This illustrated the different relationships between each model, whether its a one-to-many or many-to-many relationship. It was important deciding the relationships at an early stage, so that our models and database weren't affected. 
 
 <img src="./Images/Planning.png" width="600" height="400"/> <br/>
 <img src='https://i.imgur.com/9G9yg80.png'>
@@ -76,7 +76,7 @@ class Instructor(models.Model):
   def __str__(self):
     return f'{self.name}'
 ```
-- The Gym table also consisted of a name, but in addition, had a facilities field e.g parking, showers or lockers
+- The Gym table also consisted of a name, but in addition, had a facilities field, e.g parking, showers or lockers.
 ```js
 class Gym(models.Model):
   name = models.CharField(max_length=500)
@@ -87,11 +87,11 @@ class Gym(models.Model):
 ```
 - The Fitness Class table was our main model. This consisted of a fitness class name, gym, activity_type, instructor, description, time_of_class and comments. 
 
-- A comments model was created at an early stage (as a bonus feature), however unfortunately we ran out of time and therefore didn't implement it. Although, now that it is in our models, it will make it much easier for the feature to be created in the future, as we already have the model in our backend.
+- A comments model was created at an early stage (as a bonus feature); however, we unfortunately ran out of time and therefore didn't implement it. Although, now that it is in our models, it will make it much easier for the feature to be created in the future, as we already have the model in our backend.
 
 - The FitnessClass model, had the following relationships: 
-1. A one-to-many relationship with gym, signifying many fitness classes to one gym,
-2. A one-to-many relationship with instructor, signifying many fitness classes to one instructor,
+1. A one-to-many relationship with gym, signifying many fitness classes to one gym;
+2. A one-to-many relationship with instructor, signifying many fitness classes to one instructor;
 3. A many-to-many relationship with comments, signifying there can be many comments to many fitness classes.
 
 ```js
@@ -156,9 +156,9 @@ class User(AbstractUser):
 
 - We created a user serializer that will check that the password and password_confirmation fields match, if they do not match, we send a validation error to the user. 
 
-- We then use Django's built in validate_password method that checks the strength of the password. This is the same method used when creating a super user in the terminal. It ensures that passwords aren't too weak. 
+- We used Django's built in validate_password method that checks the strength of the password. This is the same method used when creating a super user in the terminal. It ensures that passwords aren't too weak. 
 
-- Finally we hash the password using Django's in-built make_password function, and we store it back on the data object. This will become the serializer.data property and will ultimately get stored in the database.
+- Finally, we hashed the password using Django's in-built make_password function, and stored it back on the data object. This will become the serializer.data property and will ultimately get stored in the database.
 
 ```js
 class UserSerializer(serializers.ModelSerializer):
@@ -275,7 +275,7 @@ class ProfileView(APIView):
 ```
 ### 2. FITNESS
 
-- All our views in our Fitness App, used the API view from rest_framework. 
+- All our views in our Fitness App used the API view from rest_framework. 
 
 - Here are the urls for our fitness app views:
 
@@ -294,9 +294,9 @@ urlpatterns = [
 ]
 ```
 
-- Django REST Framework comes with some powerful built in permissions. They are very simple to use and can be added any view by passing them as a list or tuple to a permission_classes property.
+- Django REST Framework comes with some powerful built-in permissions. They are very simple to use and can be added any view by passing them as a list or tuple to a permission_classes property.
 
-- IsOwnerOrReadOnly allows an unauthenticated user read only access eg: INDEX and SHOW, but only allows unsafe access, eg: CREATE, UPDATE and DELETE to Owner.
+- IsOwnerOrReadOnly allows an unauthenticated user read only access eg: INDEX and SHOW, but only allows unsafe access, e.g. CREATE, UPDATE and DELETE to Owner.
 
 ```js
 class IsOwnerOrReadOnly(BasePermission):
@@ -307,7 +307,7 @@ class IsOwnerOrReadOnly(BasePermission):
     return request.user == obj.user
 ```
 
-- As the admin is the only person who can post, delete and put any of the data (from the admin panel), we decided the user will only need a get route on all our views, apart from the Booked Class View
+- As the admin is the only person who can post, delete and put any of the data (from the admin panel), we decided the user will only need a get route on all our views, apart from the Booked Class View.
 
 - The AllFitnessClassView gets all the fitness classes, whereas the FitnessClassDetailView gets a single fitness class.
 
@@ -330,7 +330,7 @@ class FitnessClassDetailView(APIView):
     serializer = PopulateFitnessClassSerializer(fitness_class)
     return Response(serializer.data)
 ```
-- The BookedClass View has a route for posting to the booked classes endpoint as well as getting and deleting a single booked class.
+- The BookedClass View has a route for posting to the booked classes endpoint, as well as getting and deleting a single booked class.
 
 ```js
 class BookedClassesView(APIView):
@@ -369,7 +369,7 @@ Once we were clear on how the user journey would be made, we quickly got started
 
 The nature of this app was to primarily be used on **mobile apps** as users would be likely to view class availability during their day. Because of this, the app was designed to be mobile first. We implemented using a CSS framework into our project in order to focus on the functionality of how the components would work.
 
-## Hompage 
+## Homepage 
 
 - The homepage was built with limited accessibility for users. In designing our backend, content would only be available to users who had created an account. The landing page therefore prompts users to either create an account or to login using buttons to redirect them to the appropriate page. 
  
@@ -465,7 +465,7 @@ The screenshots below are taken from the development stage to illustrate the ima
 
 ## Borough & Class Filtering
 
-Now that users have access to all the app functionality, they are able to browse through the Boroughs that are available on the app. We decided to implement 12 Boroughs as a whole to demonstrate how the page would look with multiple boroughs available and when the page scrolls, other components would not be affected and the design would stay intact. 
+Now that users have access to all the app functionality, they are able to browse through the Boroughs that are available on the app. We decided to implement 12 Boroughs as a whole to demonstrate how the page would look with multiple boroughs available and when the page scrolls; other components would not be affected and the design would stay intact. 
 
 A feature often seen on pages where multiple choices are available, such as our boroughs, a filtration is available for users to quickly find one of their choosing. We also decided to use this for enhanced user experience.  Our filtering technique finds any borough on their name. 
 
@@ -501,7 +501,7 @@ Achieving this required three pieces of state to be used:
 
   5. During this, the state of `query` and `filteredBoroughs` are reset. The `query` is set to be the input value and `filteredBoroughs` is set to be the variable where the filter method was applied. 
 
-We also applied a filter once a user selects a Borough they would like to book a class in. This filter allows the user to view classes by the class type i.e HIIT. 
+We also applied a filter once a user selects a Borough they would like to book a class in. This filter allows the user to view classes by the class type, i.e HIIT. 
 
 This filter took a slightly different approach and used options to filter through the classes available rather than by freely typing. 
 
@@ -592,24 +592,24 @@ This function runs in a similar way to the filtering on the Borough page. Howeve
 
 - To implement comments to each fitness class. Users could comment on the class if they attended it and give their opinion on it.
 
-- At the moment there is no limit on the number of people who can book onto a class. In reality, fitness classes have a limit to the number of attendees. This would be great to implement to visually show users if a class was full if the max number was met and if a space were to open up, the class would be available to be booked again.  
+- At the moment there is no limit on the number of people who can book onto a class. In reality, fitness classes have a limit to the number of attendees. This would be great to implement to visually show users if a class was full, if the max number was met, and if a space was to open up, the class would be available to be booked again.  
 
-- At the moment the app focuses on booking classes which are in 24 hours. We would like to implement classes for the week. 
+- At the moment, the app focuses on booking classes which are in 24 hours. We would like to implement classes for the week. 
 
-- A user being able to delete their account
+- A user being able to delete their account.
 
 - A chat feature where users could interact with an instructor if they wanted personal training.
 
 ## Biggest Challenge & Win
 
-- My biggest challenge and win was the Image upload functionality. This functionality was for the user profile picture that allows users to add a file (rather than a link) from the frontend, and then store the encrypted version in the app's backend. We managed to solve this through creating a Media Root to store the profile images in our backend and then appending all the information the user inputted to the `FormData` in the frontend.
+- My biggest challenge and win was the Image upload functionality. This functionality was for the user profile picture that allows users to add a file (rather than a link) from the frontend, and then store the encrypted version in the app's backend. We managed to solve this through creating a Media Root to store the profile images in our backend, and then appending all the information the user input to the `FormData` in the frontend.
 
-- Another win was using react hooks for the first time, this involved looking through the documentation and ensuring we implemeneted hooks correctly.
+- Another win was using react hooks for the first time; this involved looking through the documentation and ensuring we implemented hooks correctly.
 
 ## Lessons Learned
 
 - The importance of designing your models and the fields correctly was a great lesson learnt. In development, by ensuring these are correct it will make accessing and making requests to the API much easier. 
 
-- Importance of configuring Django early e.g. configuring Images. Implementing images was done very late on during the process and required a configuration to the backend. It would've been wiser to have investigated this earlier to ensure our project was set up correctly. 
+- Importance of configuring Django early, e.g. configuring Images. Implementing images was done very late on during the process and required a configuration to the backend. It would've been wiser to have investigated this earlier to ensure our project was set up correctly. 
 
-- Create a fixture files early on. Experimenting with data became incredibly difficult to keep track off whilst testing, to ensure all the functionality pulled through into the frontend correctly. If a fixtures file was made earlier, we would've spent more time on creating functionality. 
+- The importance of creating a fixtures file early on. Experimenting with data became incredibly difficult to keep track of, whilst testing, to ensure the functionality worked in the frontend. If a fixtures file was made earlier, we would have spent more time focusing on creating the functionality. 
