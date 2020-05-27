@@ -76,7 +76,7 @@ class Instructor(models.Model):
   def __str__(self):
     return f'{self.name}'
 ```
-- The Gym table also consisted of a name, but in addition, had a facilities field, e.g parking, showers or lockers.
+- The Gym table also consisted of a name, but in addition, had a facilities field, e.g. parking, showers or lockers.
 ```js
 class Gym(models.Model):
   name = models.CharField(max_length=500)
@@ -139,7 +139,7 @@ class BookedClass(models.Model):
 
 ### 1. JWT_AUTH
 
-Django provided us with a basic User, however we extended this by adding an image and email field. The image field was 'blank=true" and therefore it was not necessary for the user to provide one upon registration. It is this user model, which has a relationship with our bookedClass model in our Fitness App.
+Django provided us with a basic User; however, we extended this by adding an image and email field. The image field was 'blank=true" and therefore it was not necessary for the user to provide one upon registration. It is this user model, which has a relationship with our bookedClass model in our Fitness App.
 
 ```js
 class User(AbstractUser):
@@ -277,7 +277,7 @@ class ProfileView(APIView):
 
 - All our views in our Fitness App used the API view from rest_framework. 
 
-- Here are the urls for our fitness app views:
+- Here are the URLs for our fitness app views:
 
 ``` js
 urlpatterns = [
@@ -443,7 +443,7 @@ Displaying error messages to users on the register and login components was anot
 
   ## Profile 
 
-  For every user who created an account, they would also be given their own profile page. From there they were able to access all functionalities of the app including booking and deleting classes. 
+For every user who created an account, they would also be given their own profile page. From there they were able to access all functionalities of the app including booking and deleting classes. 
 
 As mentioned before, users were given the opportunity to upload an image from their computer into the database. This photo would be displayed on this page. 
 
@@ -501,7 +501,7 @@ Achieving this required three pieces of state to be used:
 
   5. During this, the state of `query` and `filteredBoroughs` are reset. The `query` is set to be the input value and `filteredBoroughs` is set to be the variable where the filter method was applied. 
 
-We also applied a filter once a user selects a Borough they would like to book a class in. This filter allows the user to view classes by the class type, i.e HIIT. 
+We also applied a filter once a user selects a Borough they would like to book a class in. This filter allows the user to view classes by the class type, i.e. HIIT. 
 
 This filter took a slightly different approach and used options to filter through the classes available rather than by freely typing. 
 
